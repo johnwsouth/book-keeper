@@ -1,0 +1,40 @@
+body{
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  background-color: moccasin;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+
+.header-container {
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  height: 20%;
+  font-size: 4rem;
+  text-align:
+}
+
+.table {
+  width: 100%;
+  box-shadow: 5px 1px 5px black;
+}
+
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+    border: 3px solid white
+
+}
+.table th{
+    border: white solid 3px !important;
+
+}
+
+table th, table thead {
+    height: 80px;
+    font-size: 1.6rem;
+
+}
