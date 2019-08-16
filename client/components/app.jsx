@@ -10,9 +10,11 @@ class App extends React.Component {
     };
     this.getAllStudents = this.getAllStudents.bind(this);
   }
+
   componentDidMount() {
     this.getAllStudents();
   }
+
   getAllStudents() {
     fetch('/api/grades')
       .then(response => {
