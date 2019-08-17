@@ -1,0 +1,17 @@
+body{
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: moccasin;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.header-container {
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  height: 20%;
+  font-size: 4rem;
+}
