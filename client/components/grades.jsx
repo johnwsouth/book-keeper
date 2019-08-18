@@ -9,6 +9,7 @@ function Grade(props) {
 
     </tr>);
 }
+
 function GradeTable(props) {
   return (
     <table className=" table table-dark table-striped table-bordered ">
