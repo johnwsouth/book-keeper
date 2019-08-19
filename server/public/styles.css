@@ -33,3 +33,48 @@ body{
   box-shadow: 1px 2px 5px black;
   border-radius: 20%;
 }
+
+.table{
+  width: 60%;
+  display: inline-table;
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+.form-container{
+  width: 26%;
+  position: absolute;
+  display: inline-block;
+  margin-left: 7%;
+  margin-top: 4%;
+}
+
+.form{
+  height: 40px;
+  display: block;
+  margin-top: 10px;
+}
+
+.table-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon{
+  display: inline-block;
+  position: absolute;
+  left: -10%;
+  font-size: 1.5rem;
+}
+
+.icon-name {
+  top: 8.5%
+}
+.icon-course{
+  top:34%
+}
+
+.icon-grade{
+  top:59%;
+}
