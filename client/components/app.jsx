@@ -14,7 +14,7 @@ class App extends React.Component {
     this.addGrade = this.addGrade.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getAllStudents();
   }
 
