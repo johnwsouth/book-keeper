@@ -5,18 +5,30 @@ body{
 #root {
   min-height: 100vh;
   background-color: tan;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Cardo', serif;
+
+
+}
+
+.title-container {
+  width: 50%;
 
 }
 
 .header-container {
   color: white;
+  background-color: black;
   text-shadow: 1px 1px 5px black;
   height: 20%;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 .header-grade-average {
   height: 100%
+}
+
+.book-master{
+  height: 6rem;
+  margin-left: 1%
 }
 
 

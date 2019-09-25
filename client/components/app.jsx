@@ -7,28 +7,28 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: []
+      entries: []
     };
-    this.getAllStudents = this.getAllStudents.bind(this);
+    this.getAllEntries = this.getAllEntries.bind(this);
     this.getGradeAverage = this.getGradeAverage.bind(this);
-    this.addGrade = this.addGrade.bind(this);
-    this.deleteGrade = this.deleteGrade.bind(this);
+    this.addEntry = this.addEntry.bind(this);
+    this.deleteEntry = this.deleteEntry.bind(this);
   }
 
   componentDidMount() {
-    this.getAllStudents();
+    this.getAllEntries();
   }
 
   getGradeAverage() {
     var gradeTotal = 0;
-    for (var i = 0; i < this.state.grades.length; i++) {
+    for (var i = 0; i < this.state.entries.length; i++) {
       gradeTotal += this.state.grades[i].grade;
     }
-    var average = gradeTotal / this.state.grades.length;
+    var average = gradeTotal / this.state.entries.length;
     return average;
   }
 
-  getAllStudents() {
+  getAllEntries() {
     fetch('/api/grades')
       .then(response => {
         return response.json();
@@ -37,33 +37,33 @@ class App extends React.Component {
       });
   }
 
-  addGrade(newGrade) {
+  addEntry(newEntry) {
     fetch('/api/grades', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newGrade)
+      body: JSON.stringify(newEntry)
     })
       .then(response => response.json())
-      .then(grade => {
-        const newGrades = this.state.grades.concat(grade);
-        this.setState({ grades: newGrades });
+      .then(entry => {
+        const newEntries = this.state.grades.concat(entry);
+        this.setState({ entries: newEntries });
       });
   }
 
-  deleteGrade(event) {
-    var currentGrade = event.target.getAttribute('data-key');
-    fetch(`/api/grades/${currentGrade}`, {
+  deleteEntry(event) {
+    var currentEntry = event.target.getAttribute('data-key');
+    fetch(`/api/grades/${currentEntry}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(() => {
-        var newGradesArray = this.state.grades.map(gradeObject => {
-          if (gradeObject.id === currentGrade) {
+        var newEntriesArray = this.state.entries.map(entryObject => {
+          if (entryObject.id === currentEntry) {
             return;
           }
-          return gradeObject;
+          return entryObject;
         }).then(() => {
-          this.setState({ newGradesArray });
+          this.setState({ newEntriesArray });
         });
       });
   }
@@ -73,8 +73,8 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header getAverage ={this.getGradeAverage}/>
-        <GradeTable grades = {this.state.grades} deleteGrade = {this.deleteGrade}/>
-        <GradeForm onSubmit = {this.addGrade}/>
+        <GradeTable grades = {this.state.entries} deleteEntry = {this.deleteEntry}/>
+        <GradeForm onSubmit = {this.addEntry}/>
 
       </React.Fragment>
     );
