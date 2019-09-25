@@ -6,6 +6,7 @@ function Grade(props) {
       <td>{props.grade.name}</td>
       <td>{props.grade.course}</td>
       <td>{props.grade.grade}</td>
+      <td className ="operation-cell"><button data-key={props.grade.id} className = "btn btn-secondary" onClick={props.deleteGrade}>Delete</button></td>
 
     </tr>);
 }
@@ -18,12 +19,13 @@ function GradeTable(props) {
           <th scope="col">Student Name</th>
           <th scope="col">Course </th>
           <th scope="col">Grade</th>
+          <th scope="col">Operation</th>
 
         </tr>
       </thead>
       <tbody>
         {props.grades.map(grade => {
-          return <Grade key= {grade.id} grade={grade} />;
+          return <Grade key= {grade.id} grade={grade} deleteGrade={props.deleteGrade}/>;
 
         })}
       </tbody>
