@@ -1,9 +1,9 @@
 {
-  "grades": [
+  "entries": [
     {
-      "name": "John",
-      "course": "Chemistry",
-      "grade": 49,
+      "productName": "Flax",
+      "price": 4.99,
+      "units": "2",
       "id": 1
     }
   ]

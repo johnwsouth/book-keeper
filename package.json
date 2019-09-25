@@ -1,7 +1,7 @@
 {
   "name": "sgt-react",
   "version": "1.0.0",
-  "description": "The Student Grade Table: Written in React",
+  "description": "The Student entry Table: Written in React",
   "main": "server/index.js",
   "scripts": {
     "client": "webpack-dev-server",

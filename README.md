@@ -1,6 +1,6 @@
 # sgt-react
 
-The Student Grade Table: Written in React
+The Student entry Table: Written in React
 
 ## Introduction
 
@@ -25,10 +25,10 @@ For this project, you will be building a single-page React application that comm
 
 ## Features
 
-- [User can view all grades.](features/user-can-view-all-grades.md)
-- [User can view the average grade.](features/user-can-view-the-average-grade.md)
-- [User can add a grade.](features/user-can-add-a-grade.md)
-- [User can delete a grade.](features/user-can-delete-a-grade.md)
+- [User can view all entries.](features/user-can-view-all-entries.md)
+- [User can view the average entry.](features/user-can-view-the-average-entry.md)
+- [User can add a entry.](features/user-can-add-a-entry.md)
+- [User can delete a entry.](features/user-can-delete-a-entry.md)
 
 ## Preview
 
@@ -36,9 +36,9 @@ For this project, you will be building a single-page React application that comm
 
 ## Server API
 
-#### `GET /api/grades`
+#### `GET /api/entries`
 
-Responds with all recorded `grades`.
+Responds with all recorded `entries`.
 
 ##### Example Response Body
 
@@ -47,29 +47,29 @@ Responds with all recorded `grades`.
   {
     "id": 1,
     "name": "Daniel Paschal",
-    "grade": 100,
-    "course": "Web Development"
+    "entry": 100,
+    "price": "Web Development"
   },
   {
     "id": 2,
     "name": "Scott Bowler",
-    "grade": 100,
-    "course": "Web Development"
+    "entry": 100,
+    "price": "Web Development"
   }
 ]
 ```
 
-#### `POST /api/grades`
+#### `POST /api/entries`
 
-Accepts a single `grade` object in the request body and inserts it into all `grades`. Responds with the inserted `grade`, including an auto-generated `id`.
+Accepts a single `entry` object in the request body and inserts it into all `entries`. Responds with the inserted `entry`, including an auto-generated `id`.
 
 ##### Example Request Body
 
 ```json
 {
   "name": "Tim Davis",
-  "grade": 50,
-  "course": "Web Development"
+  "entry": 50,
+  "price": "Web Development"
 }
 ```
 
@@ -79,14 +79,14 @@ Accepts a single `grade` object in the request body and inserts it into all `gra
 {
   "id": 3,
   "name": "Tim Davis",
-  "grade": 100,
-  "course": "Web Development"
+  "entry": 100,
+  "price": "Web Development"
 }
 ```
 
-#### `DELETE /api/grades/:id`
+#### `DELETE /api/entries/:id`
 
-Removes a `grade` from all recorded `grades`, given an `id` in the request URL. _e.g._ `/api/grades/3`
+Removes a `entry` from all recorded `entries`, given an `id` in the request URL. _e.g._ `/api/entries/3`
 
 ##### Example Response Body
 

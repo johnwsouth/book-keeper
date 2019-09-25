@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
-import GradeTable from './grades';
-import GradeForm from './grade-form';
+import EntryTable from './entries';
+import EntryForm from './entry-form';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends React.Component {
       entries: []
     };
     this.getAllEntries = this.getAllEntries.bind(this);
-    this.getGradeAverage = this.getGradeAverage.bind(this);
+    this.getEntryAverage = this.getEntryAverage.bind(this);
     this.addEntry = this.addEntry.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
   }
@@ -19,40 +19,40 @@ class App extends React.Component {
     this.getAllEntries();
   }
 
-  getGradeAverage() {
-    var gradeTotal = 0;
+  getEntryAverage() {
+    var entryTotal = 0;
     for (var i = 0; i < this.state.entries.length; i++) {
-      gradeTotal += this.state.grades[i].grade;
+      entryTotal += (this.state.entries[i].price * this.state.entries[i].units);
     }
-    var average = gradeTotal / this.state.entries.length;
+    var average = entryTotal / this.state.entries.length;
     return average;
   }
 
   getAllEntries() {
-    fetch('/api/grades')
+    fetch('/api/entries')
       .then(response => {
         return response.json();
       }).then(jsonResponse => {
-        this.setState({ grades: jsonResponse });
+        this.setState({ entries: jsonResponse });
       });
   }
 
   addEntry(newEntry) {
-    fetch('/api/grades', {
+    fetch('/api/entries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newEntry)
     })
       .then(response => response.json())
       .then(entry => {
-        const newEntries = this.state.grades.concat(entry);
+        const newEntries = this.state.entries.concat(entry);
         this.setState({ entries: newEntries });
       });
   }
 
   deleteEntry(event) {
     var currentEntry = event.target.getAttribute('data-key');
-    fetch(`/api/grades/${currentEntry}`, {
+    fetch(`/api/entries/${currentEntry}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -72,9 +72,9 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-        <Header getAverage ={this.getGradeAverage}/>
-        <GradeTable grades = {this.state.entries} deleteEntry = {this.deleteEntry}/>
-        <GradeForm onSubmit = {this.addEntry}/>
+        <Header getAverage ={this.getEntryAverage}/>
+        <EntryTable entries = {this.state.entries} deleteEntry = {this.deleteEntry}/>
+        <EntryForm onSubmit = {this.addEntry}/>
 
       </React.Fragment>
     );

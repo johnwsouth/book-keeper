@@ -7,8 +7,8 @@ function Header(props) {
         <div className="header-title text-left d-inline-block">Book Master</div>
         <img className ="book-master" src="./images/bookMaster.png" alt=""/>
       </div>
-      <div className="grade-average w-50 text-right">
-        <div className="header-grade-average text-right d-inline-block pl-5">Average Grade: <div className= "average-grade-box d-inline-block badge h-60">{props.getAverage().toFixed(2)}</div></div>
+      <div className="entry-average w-50 text-right">
+        <div className="header-entry-average text-right d-inline-block pl-5">Price Average: <div className= "average-entry-box d-inline-block badge h-60">{props.getAverage().toFixed(2)}</div></div>
       </div>
     </div>
   );

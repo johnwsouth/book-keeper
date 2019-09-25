@@ -22,7 +22,7 @@ body{
   height: 20%;
   font-size: 3.5rem;
 }
-.header-grade-average {
+.header-entry-average {
   height: 100%
 }
 
@@ -32,13 +32,13 @@ body{
 }
 
 
-.grade-average{
+.entry-average{
   line-height: 300%;
   height: 100px;
   font-size: 2rem;
 }
 
-.average-grade-box{
+.average-entry-box{
   font-size: 2rem;
   background-color: gray;
   line-height: 140%;
@@ -83,11 +83,11 @@ body{
 .icon-name {
   top: 8.5%
 }
-.icon-course{
+.icon-price{
   top:34%
 }
 
-.icon-grade{
+.icon-entry{
   top:59%;
 }
 
