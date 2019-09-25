@@ -6,7 +6,6 @@ function Grade(props) {
       <td>{props.grade.name}</td>
       <td>{props.grade.course}</td>
       <td>{props.grade.grade}</td>
-      {/* <button type="cancel" className="btn btn-secondary ml-3" onClick={this.handleCancel}>Cancel</button> */}
       <td className ="operation-cell"><button data-key={props.grade.id} className = "btn btn-secondary" onClick={props.deleteGrade}>Delete</button></td>
 
     </tr>);

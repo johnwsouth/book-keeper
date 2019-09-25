@@ -62,9 +62,9 @@ class App extends React.Component {
             return;
           }
           return gradeObject;
+        }).then(() => {
+          this.setState({ newGradesArray });
         });
-        this.setState({ newGradesArray });
-        this.getAllStudents();
       });
   }
 

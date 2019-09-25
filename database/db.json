@@ -1,12 +1,6 @@
 {
   "grades": [
     {
-      "name": "John",
-      "course": "Math",
-      "grade": 20,
-      "id": 1
-    },
-    {
       "name": "Adam",
       "course": "Swift",
       "grade": 70,
