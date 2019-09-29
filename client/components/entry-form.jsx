@@ -61,7 +61,7 @@ class EntryForm extends React.Component {
 
     return (
       <form className="mb-4 shadow-md form-container" onSubmit={this.handleSubmit} >
-        <i className="fas fa-user-edit icon-name icon"></i>
+        <i className="fab fa-product-hunt icon-name icon"></i>
         <input
           required
           autoFocus

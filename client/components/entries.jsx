@@ -3,7 +3,7 @@ function Entry(props) {
   return (
     <tr key={props.entry.id}>
       <td>{props.entry.productName}</td>
-      <td>{props.entry.price}</td>
+      <td>{'$ ' + props.entry.price}</td>
       <td>{props.entry.units}</td>
       <td className ="operation-cell"><button data-key={props.entry.id} className = "btn btn-secondary" onClick={props.deleteEntry}>Delete</button></td>
     </tr>);
