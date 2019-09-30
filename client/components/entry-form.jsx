@@ -70,7 +70,7 @@ class EntryForm extends React.Component {
           className="form-control form"
           placeholder="Enter the purchased product"
           onChange={this.handleChangeProduct} />
-        <i className="fas fa-book icon-price icon"></i>
+        <i className="ml-1 fas fa-dollar-sign icon-price icon"></i>
         <input
           required
           autoFocus
@@ -79,14 +79,14 @@ class EntryForm extends React.Component {
           className="form-control form"
           placeholder="Enter the product price"
           onChange={this.handleChangeprice} />
-        <i className="fas fa-medal icon-entry icon"></i>
+        <i className="fas fa-coins icon-entry icon"></i>
         <input
           required
           autoFocus
           type="text"
           value={this.state.units}
           className="form-control form"
-          placeholder="Enter the units sold"
+          placeholder="Enter the number of units sold"
           onChange={this.handleChangeEntry}/>
         <div className="mt-3">
           <button type="submit" className="btn btn-dark">Add entry</button>

@@ -5,6 +5,12 @@
       "price": 4.99,
       "units": "3",
       "id": 1
+    },
+    {
+      "productName": "Baby Powder",
+      "price": 2.99,
+      "units": "2",
+      "id": 2
     }
   ]
 }
