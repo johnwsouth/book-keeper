@@ -13,10 +13,20 @@ class App extends React.Component {
     this.getEntryAverage = this.getEntryAverage.bind(this);
     this.addEntry = this.addEntry.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
+    this.getProductAverage = this.getProductAverage.bind(this);
   }
 
   componentDidMount() {
     this.getAllEntries();
+  }
+
+  getProductAverage() {
+    var productTotal = 0;
+    for (var i = 0; i < this.state.entries.length; i++) {
+      productTotal += this.state.entries[i].price;
+    }
+    var average = productTotal / this.state.entries.length;
+    return average;
   }
 
   getEntryAverage() {
@@ -64,6 +74,7 @@ class App extends React.Component {
           return entryObject;
         }).then(() => {
           this.setState({ newEntriesArray });
+          this.getAllEntries();
         });
       });
   }
@@ -72,7 +83,7 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-        <Header getAverage ={this.getEntryAverage}/>
+        <Header getProductAverage= {this.getProductAverage} getEntryAverage ={this.getEntryAverage}/>
         <EntryTable entries = {this.state.entries} deleteEntry = {this.deleteEntry}/>
         <EntryForm onSubmit = {this.addEntry}/>
 

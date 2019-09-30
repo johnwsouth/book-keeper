@@ -23,7 +23,8 @@ body{
   font-size: 3.5rem;
 }
 .header-entry-average {
-  height: 100%
+  height: 100%;
+  font-size: 1.15rem;
 }
 
 .book-master{
@@ -39,11 +40,11 @@ body{
 }
 
 .average-entry-box{
-  font-size: 2rem;
+  font-size: 1.15rem;
   background-color: gray;
   line-height: 140%;
   box-shadow: 1px 2px 5px black;
-  border-radius: 20%;
+  border-radius: 50%;
 }
 
 .table{
