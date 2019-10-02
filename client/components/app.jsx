@@ -63,8 +63,9 @@ class App extends React.Component {
     var currentEntry = event.target.getAttribute('data-key');
     fetch(`/api/entries/${currentEntry}`, {
       method: 'DELETE'
+    }).then(() => {
+      return 'done';
     });
-
     var changedEntries = this.state.entries.filter(entry => {
       if (entry.entryID + '' !== currentEntry) {
         return entry;
