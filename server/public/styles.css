@@ -4,7 +4,9 @@ body{
 
 #root {
   min-height: 100vh;
-  background-color: tan;
+  width: 100vw;
+  background-image: url('./images/bgBookMaster.jpg');
+  background-size: cover;
   font-family: 'Cardo', serif;
 
 
@@ -21,6 +23,7 @@ body{
   text-shadow: 1px 1px 5px black;
   height: 20%;
   font-size: 3.5rem;
+  z-index: 2;
 }
 .header-entry-average {
   height: 100%;

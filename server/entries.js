@@ -35,6 +35,9 @@ router.post('/', jsonParser, (req, res, next) => {
 router.delete('/:id', jsonParser, (req, res, next) => {
   connection.execute('DELETE FROM entries WHERE entryID = ' + req.params.id, (err, rows, next) => {
     if (err) return next(err);
+    req.on('error', function (err) {
+      if (err) return next(err);
+    });
     res.status(200);
   });
 });
