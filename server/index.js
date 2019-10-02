@@ -1,14 +1,28 @@
-const path = require('path');
-const jsonServer = require('json-server');
+require('dotenv/config');
+const express = require('express');
+const connection = require('./connection');
+const entries = require('./entries');
+const bodyParser = require('body-parser');
 
-const dbPath = path.resolve(__dirname, '../database/db.json');
-const server = jsonServer.create();
-const middleware = jsonServer.defaults();
-const endpoints = jsonServer.router(dbPath);
+const server = express();
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+let PORT = process.env.PORT;
 
-server.use(middleware);
-server.use('/api', endpoints);
-server.listen(3001, () => {
+connection.connect();
+
+server.use('/api/entries', entries);
+
+server.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({
+    error: 'Internal Server Error',
+    message: 'An unexpected error has occurred'
+  });
+
+});
+
+server.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log('JSON Server listening on port 3001\n');
+  console.log('It\'s listening closely\n');
 });

@@ -45,11 +45,11 @@ class EntryForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     var newEntry = {
-      productName: this.state.productName,
-      price: parseFloat(this.state.price),
-      units: this.state.units
+      entryName: this.state.productName,
+      entryPrice: this.state.price,
+      entryUnits: this.state.units
     };
-    this.props.onSubmit(newEntry);
+    this.props.addEntry(newEntry);
     this.setState({
       productName: '',
       price: '',
