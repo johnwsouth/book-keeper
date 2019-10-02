@@ -7,8 +7,8 @@ const jsonParser = bodyParser.json();
 router.get('/', (req, res, next) => {
   connection.query('SELECT * FROM entries', (err, rows, fields) => {
     if (err) return next(err);
-    if (rows[0] === undefined) {
-      res.send('No entries specified exist');
+    if (rows === undefined) {
+      res.send('No entries exist');
     }
     res.status(200).json(rows);
   });
@@ -29,6 +29,13 @@ router.post('/', jsonParser, (req, res, next) => {
   connection.execute('INSERT INTO entries (entryID, entryName, entryPrice, entryUnits, entryTime) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP);', entryParams, (err, rows, next) => {
     if (err) return next(err);
     res.status(200).json(rows);
+  });
+});
+
+router.delete('/:id', jsonParser, (req, res, next) => {
+  connection.execute('DELETE FROM entries WHERE entryID = ' + req.params.id, (err, rows, next) => {
+    if (err) return next(err);
+    res.status(200);
   });
 });
 
