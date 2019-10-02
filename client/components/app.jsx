@@ -55,28 +55,19 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(entry => {
-        const newEntries = this.state.entries.concat(entry);
-        this.setState({ entries: newEntries });
+        this.getAllEntries();
       });
   }
 
   deleteEntry(event) {
     var currentEntry = event.target.getAttribute('data-key');
     fetch(`/api/entries/${currentEntry}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
+      method: 'DELETE'
     })
       .then(() => {
-        var newEntriesArray = this.state.entries.map(entryObject => {
-          if (entryObject.id === currentEntry) {
-            return;
-          }
-          return entryObject;
-        }).then(() => {
-          this.setState({ newEntriesArray });
-          this.getAllEntries();
-        });
+        this.getAllEntries();
       });
+
   }
 
   render() {
@@ -85,7 +76,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header getProductAverage= {this.getProductAverage} getEntryAverage ={this.getEntryAverage}/>
         <EntryTable entries = {this.state.entries} deleteEntry = {this.deleteEntry}/>
-        <EntryForm onSubmit = {this.addEntry}/>
+        <EntryForm addEntry = {this.addEntry}/>
 
       </React.Fragment>
     );

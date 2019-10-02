@@ -4,10 +4,12 @@
   "description": "The Student entry Table: Written in React",
   "main": "server/index.js",
   "scripts": {
-    "client": "webpack-dev-server",
-    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
     "build": "webpack --mode=production",
-    "dev": "npm-run-all --silent --parallel start client"
+    "dev": "npm-run-all --silent --parallel watch client",
+    "watch": "nodemon .",
+    "client": "webpack-dev-server"
   },
   "husky": {
     "hooks": {
@@ -21,7 +23,12 @@
     ]
   },
   "dependencies": {
+    "body-parser": "1.19.0",
+    "dotenv": "8.1.0",
+    "express": "4.17.1",
     "json-server": "0.14.2",
+    "mysql2": "1.7.0",
+    "nodemon": "1.19.3",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
