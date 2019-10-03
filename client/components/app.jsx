@@ -83,7 +83,7 @@ class App extends React.Component {
         <Header getProductAverage= {this.getProductAverage} getEntryAverage ={this.getEntryAverage}/>
         <EntryTable entries = {this.state.entries} deleteEntry = {this.deleteEntry}/>
         <EntryForm addEntry = {this.addEntry}/>
-        <Chart />
+        <Chart entries = {this.state.entries}/>
       </React.Fragment>
     );
   }
