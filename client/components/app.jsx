@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import EntryTable from './entries';
 import EntryForm from './entry-form';
+import Chart from './chart';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends React.Component {
   getProductAverage() {
     var productTotal = 0;
     for (var i = 0; i < this.state.entries.length; i++) {
-      productTotal += this.state.entries[i].price;
+      productTotal += this.state.entries[i].entryPrice;
     }
     var average = productTotal / this.state.entries.length;
     return average;
@@ -32,7 +33,7 @@ class App extends React.Component {
   getEntryAverage() {
     var entryTotal = 0;
     for (var i = 0; i < this.state.entries.length; i++) {
-      entryTotal += (this.state.entries[i].price * this.state.entries[i].units);
+      entryTotal += (this.state.entries[i].entryPrice * this.state.entries[i].entryUnits);
     }
     var average = entryTotal / this.state.entries.length;
     return average;
@@ -82,7 +83,7 @@ class App extends React.Component {
         <Header getProductAverage= {this.getProductAverage} getEntryAverage ={this.getEntryAverage}/>
         <EntryTable entries = {this.state.entries} deleteEntry = {this.deleteEntry}/>
         <EntryForm addEntry = {this.addEntry}/>
-
+        <Chart entries = {this.state.entries}/>
       </React.Fragment>
     );
   }
