@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryBar } from 'victory';
+import { VictoryBar, VictoryAxis, VictoryChart } from 'victory';
 
 export default class Chart extends React.Component {
   constructor(props) {
@@ -14,8 +14,8 @@ export default class Chart extends React.Component {
     const data = [];
     for (var i = 0; i < this.props.entries.length; i++) {
       data.push({
-        entryID: this.props.entries[i].entryID,
-        entryTotal: parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100)
+        'Entries': this.props.entries[i].entryID,
+        'Entry Totals': parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100)
       });
     }
     return data;
@@ -26,13 +26,30 @@ export default class Chart extends React.Component {
     if (this.props.entries[0] !== undefined) {
       var data = this.dataRotation();
       return (
-        <VictoryBar style={{ parent: { maxWidth: '20%' } }}
-          data={data}
-          // data accessor for x values
-          x="entryID"
-          // data accessor for y values
-          y="entryTotal  "
-        />
+        <VictoryChart
+          domainPadding={{ x: 40 }}
+          style={{ parent: { maxWidth: '20%' } }}
+        >
+          <VictoryBar style={{ parent: { maxWidth: '20%' } }}
+            data={data}
+            // data accessor for x values
+            x='Entries'
+            // data accessor for y values
+            y='Entry Totals'
+          />
+          <VictoryAxis
+            label="Entries"
+            style={{
+              axisLabel: { padding: 30 }
+            }}
+          />
+          <VictoryAxis dependentAxis
+            label="Entry Totals"
+            style={{
+              axisLabel: { padding: 40 }
+            }}
+          />
+        </ VictoryChart>
       );
     } else {
       return null;
