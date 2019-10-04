@@ -1,10 +1,15 @@
 import React from 'react';
 function Entry(props) {
+
+  var newEntryTimeArr = props.entry.entryTime.split('T');
+  var newEntryDate = newEntryTimeArr[0];
+  var newEntryTime = newEntryTimeArr[1].substring(0, 8);
   return (
     <tr key={props.entry.entryID}>
       <td>{props.entry.entryName}</td>
       <td>{'$ ' + (parseFloat(props.entry.entryPrice / 100))}</td>
       <td>{props.entry.entryUnits}</td>
+      <td>{newEntryDate + ' - ' + newEntryTime}</td>
       <td className ="operation-cell"><button data-key={props.entry.entryID} className = "btn btn-secondary" onClick={props.deleteEntry}>Delete</button></td>
     </tr>);
 }
@@ -18,6 +23,7 @@ function EntryTable(props) {
             <th scope="col">Purchased product</th>
             <th scope="col">Price</th>
             <th scope="col">Units sold</th>
+            <th scope="col">Time Entered</th>
             <th scope="col">Operation</th>
           </tr>
         </thead>

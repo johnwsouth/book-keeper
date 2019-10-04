@@ -32,7 +32,7 @@ export default class Chart extends React.Component {
           <VictoryChart
 
             domainPadding={{ x: 20 }}
-            style={{ parent: { maxWidth: '30%', display: 'inline-block' } }}
+            style={{ parent: { maxWidth: '30%', display: 'inline-block', padding: '30px' } }}
           >
             <VictoryBar style={{ parent: { maxWidth: '30%' } }}
               data={data}
