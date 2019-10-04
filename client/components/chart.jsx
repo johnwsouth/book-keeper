@@ -31,10 +31,10 @@ export default class Chart extends React.Component {
 
           <VictoryChart
 
-            domainPadding={{ x: 50 }}
+            domainPadding={{ x: 20 }}
             style={{ parent: { maxWidth: '30%', display: 'inline-block' } }}
           >
-            <VictoryBar style={{ parent: { maxWidth: '20%' } }}
+            <VictoryBar style={{ parent: { maxWidth: '30%' } }}
               data={data}
               // data accessor for x values
               x='Entries'
@@ -58,10 +58,10 @@ export default class Chart extends React.Component {
 
           <VictoryChart
 
-            domainPadding={{ x: 50 }}
+            domainPadding={{ x: 20 }}
             style={{ parent: { maxWidth: '30%', display: 'inline-block' } }}
           >
-            <VictoryBar style={{ parent: { maxWidth: '20%' } }}
+            <VictoryBar style={{ parent: { maxWidth: '30%' } }}
               data={data}
               // data accessor for x values
               x='Entries'
