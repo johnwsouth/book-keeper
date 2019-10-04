@@ -5,7 +5,7 @@ body{
 #root {
   min-height: 100vh;
   width: 100vw;
-  background-image: url('./images/bgBookMaster.jpg');
+  background-image: url('./images/SolidGray.jpg');
   background-size: cover;
   font-family: 'Cardo', serif;
 
@@ -59,10 +59,10 @@ body{
 
 .form-container{
   width: 26%;
-  position: absolute;
+  position: fixed;
   display: inline-block;
-  margin-left: 7%;
-  margin-top: 4%;
+  top: 20%;
+  right: 5%
 }
 
 .form{

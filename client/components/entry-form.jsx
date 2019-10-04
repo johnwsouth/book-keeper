@@ -60,7 +60,7 @@ class EntryForm extends React.Component {
   render() {
 
     return (
-      <form className="mb-4 shadow-md form-container" onSubmit={this.handleSubmit} >
+      <form className="shadow-md form-container" onSubmit={this.handleSubmit} >
         <i className="fab fa-product-hunt icon-name icon"></i>
         <input
           required

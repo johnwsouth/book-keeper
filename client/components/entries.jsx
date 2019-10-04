@@ -11,21 +11,23 @@ function Entry(props) {
 
 function EntryTable(props) {
   return (
-    <table className="table table-dark table-striped table-bordered">
-      <thead className= "thead-light table-header">
-        <tr>
-          <th scope="col">Purchased product</th>
-          <th scope="col">Price</th>
-          <th scope="col">Units sold</th>
-          <th scope="col">Operation</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.entries.map(entry => {
-          return <Entry key= {entry.entryID} entry={entry} deleteEntry={props.deleteEntry}/>;
-        })}
-      </tbody>
-    </table>
+    <div>
+      <table className="table table-dark table-striped table-bordered">
+        <thead className= "thead-light table-header">
+          <tr>
+            <th scope="col">Purchased product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Units sold</th>
+            <th scope="col">Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.entries.map(entry => {
+            return <Entry key= {entry.entryID} entry={entry} deleteEntry={props.deleteEntry}/>;
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 
 }
