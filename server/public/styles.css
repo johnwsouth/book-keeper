@@ -13,17 +13,25 @@ body{
 }
 
 .title-container {
-  width: 50%;
+  width: 30%;
 
+}
+
+.header-padding {
+  height: 10%;
+  display: block;
 }
 
 .header-container {
   color: white;
   background-color: black;
   text-shadow: 1px 1px 5px black;
-  height: 20%;
+  height: 10%;
+  width: 100%;
   font-size: 3.5rem;
   z-index: 2;
+  position: fixed;
+  display: flex;
 }
 .header-entry-average {
   height: 100%;
@@ -53,7 +61,7 @@ body{
 .table{
   width: 60%;
   display: inline-table;
-  margin-top: 3%;
+  margin-top: 15%;
   margin-left: 2%;
 }
 

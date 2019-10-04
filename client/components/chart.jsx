@@ -92,22 +92,25 @@ export default class Chart extends React.Component {
       return (
         <>
             <VictoryChart
-              containerComponent={<VictoryZoomContainer zoomDimension="x" zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}/>}
-              domainPadding={{ x: 20 }}
-              style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px' } }}>
-              <VictoryLabel text="Price per Entry" x={225} y={5} textAnchor="middle" />
+              containerComponent={<VictoryZoomContainer
+                zoomDimension="x"
+                zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}
+              />}
+              domainPadding={{ x: 40 }}
+              style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%' } }}>
+              <VictoryLabel text="Price per Entry" x={225} y={5} textAnchor="middle"/>
               <VictoryBar style={{ parent: { maxWidth: '50%' } }}
                 data={dataEntryTotal}
                 // data accessor for x values
                 x='Entries'
                 // data accessor for y values
                 y='Entry Totals'
-                animate={{ duration: 2000 }}
+                animate={{ duration: 650 }}
               />
               <VictoryAxis
                 label="Entries"
                 style={{
-                  axisLabel: { padding: 30 }
+                  axisLabel: { padding: 33 }
                 }}
               />
               <VictoryAxis dependentAxis
@@ -119,9 +122,12 @@ export default class Chart extends React.Component {
             </ VictoryChart>
 
           <VictoryChart
-            containerComponent={<VictoryZoomContainer zoomDimension="x" zoomDomain={{ y: [0, largestEntryUnit * 1.2] }} />}
-            domainPadding={{ x: 20 }}
-            style={{ parent: { maxWidth: '38%', display: 'inline-block' } }}>
+            containerComponent={<VictoryZoomContainer
+              zoomDimension="x"
+              zoomDomain={{ y: [0, largestEntryUnit * 1.2] }}
+            />}
+            domainPadding={{ x: 40 }}
+            style={{ parent: { maxWidth: '32%', display: 'inline-block' } }}>
             <VictoryLabel text="Price per Unit" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
               data={dataEntryPricePerUnit}
@@ -129,12 +135,12 @@ export default class Chart extends React.Component {
               x='Entries'
               // data accessor for y values
               y='Entry Totals'
-              animate={{ duration: 2000 }}
+              animate={{ duration: 650 }}
             />
             <VictoryAxis
               label="Entries"
               style={{
-                axisLabel: { padding: 30 }
+                axisLabel: { padding: 33 }
               }}
             />
             <VictoryAxis dependentAxis
