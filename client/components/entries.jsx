@@ -1,4 +1,5 @@
 import React from 'react';
+
 function Entry(props) {
 
   var newEntryTimeArr = props.entry.entryTime.split('T');
@@ -17,13 +18,13 @@ function Entry(props) {
 function EntryTable(props) {
   return (
     <div>
-      <table className="table table-dark table-striped table-bordered">
-        <thead className= "thead-light table-header">
+      <table className="table table-secondary table-bordered">
+        <thead className= "thead-dark table-header">
           <tr>
             <th scope="col">Purchased product</th>
             <th scope="col">Price</th>
             <th scope="col">Units sold</th>
-            <th scope="col">Time Entered</th>
+            <th scope="col">Entry Time</th>
             <th scope="col">Operation</th>
           </tr>
         </thead>

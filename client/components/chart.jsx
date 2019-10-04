@@ -127,7 +127,7 @@ export default class Chart extends React.Component {
               zoomDomain={{ y: [0, largestEntryUnit * 1.2] }}
             />}
             domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '32%', display: 'inline-block' } }}>
+            style={{ parent: { maxWidth: '32%', display: 'inline-block', marginBottom: '5%' } }}>
             <VictoryLabel text="Price per Unit" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
               data={dataEntryPricePerUnit}
