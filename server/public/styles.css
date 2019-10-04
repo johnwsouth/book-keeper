@@ -52,14 +52,14 @@ body{
 
 .table{
   width: 60%;
-  display: inline-table;
+  display: inline-block;
   margin-top: 3%;
   margin-left: 2%;
 }
 
 .form-container{
   width: 26%;
-  position: absolute;
+  position: relative;
   display: inline-block;
   margin-left: 7%;
   margin-top: 4%;

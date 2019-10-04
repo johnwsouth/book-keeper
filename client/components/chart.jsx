@@ -14,8 +14,9 @@ export default class Chart extends React.Component {
     const data = [];
     for (var i = 0; i < this.props.entries.length; i++) {
       data.push({
-        'Entries': this.props.entries[i].entryID,
-        'Entry Totals': parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100)
+        'Entries': this.props.entries[i].entryName,
+        'Entry Totals': parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100),
+        'label': parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100)
       });
     }
     return data;
@@ -26,30 +27,62 @@ export default class Chart extends React.Component {
     if (this.props.entries[0] !== undefined) {
       var data = this.dataRotation();
       return (
-        <VictoryChart
-          domainPadding={{ x: 40 }}
-          style={{ parent: { maxWidth: '20%' } }}
-        >
-          <VictoryBar style={{ parent: { maxWidth: '20%' } }}
-            data={data}
-            // data accessor for x values
-            x='Entries'
-            // data accessor for y values
-            y='Entry Totals'
-          />
-          <VictoryAxis
-            label="Entries"
-            style={{
-              axisLabel: { padding: 30 }
-            }}
-          />
-          <VictoryAxis dependentAxis
-            label="Entry Totals"
-            style={{
-              axisLabel: { padding: 40 }
-            }}
-          />
-        </ VictoryChart>
+        <>
+
+          <VictoryChart
+
+            domainPadding={{ x: 50 }}
+            style={{ parent: { maxWidth: '30%', display: 'inline-block' } }}
+          >
+            <VictoryBar style={{ parent: { maxWidth: '20%' } }}
+              data={data}
+              // data accessor for x values
+              x='Entries'
+              // data accessor for y values
+              y='Entry Totals'
+              animate={{ duration: 2000 }}
+            />
+            <VictoryAxis
+              label="Entries"
+              style={{
+                axisLabel: { padding: 30 }
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Entry Totals"
+              style={{
+                axisLabel: { padding: 40 }
+              }}
+            />
+          </ VictoryChart>
+
+          <VictoryChart
+
+            domainPadding={{ x: 50 }}
+            style={{ parent: { maxWidth: '30%', display: 'inline-block' } }}
+          >
+            <VictoryBar style={{ parent: { maxWidth: '20%' } }}
+              data={data}
+              // data accessor for x values
+              x='Entries'
+              // data accessor for y values
+              y='Entry Totals'
+              animate={{ duration: 2000 }}
+            />
+            <VictoryAxis
+              label="Entries"
+              style={{
+                axisLabel: { padding: 30 }
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Entry Totals"
+              style={{
+                axisLabel: { padding: 40 }
+              }}
+            />
+          </ VictoryChart>
+        </>
       );
     } else {
       return null;
