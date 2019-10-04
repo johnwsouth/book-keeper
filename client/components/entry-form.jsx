@@ -11,7 +11,7 @@ class EntryForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChangeprice = this.handleChangeprice.bind(this);
+    this.handleChangePrice = this.handleChangePrice.bind(this);
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
     this.handleChangeEntry = this.handleChangeEntry.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -22,7 +22,7 @@ class EntryForm extends React.Component {
       productName: event.target.value
     });
   }
-  handleChangeprice(event) {
+  handleChangePrice(event) {
     this.setState({
       price: event.target.value
     });
@@ -46,7 +46,7 @@ class EntryForm extends React.Component {
     event.preventDefault();
     var newEntry = {
       entryName: this.state.productName,
-      entryPrice: this.state.price,
+      entryPrice: (this.state.price * 100).toFixed(2),
       entryUnits: this.state.units
     };
     this.props.addEntry(newEntry);
@@ -72,17 +72,17 @@ class EntryForm extends React.Component {
           onChange={this.handleChangeProduct} />
         <i className="ml-1 fas fa-dollar-sign icon-price icon"></i>
         <input
+          step ={0.01}
           required
-          autoFocus
-          type="text"
+          type="number"
+          onChange={this.handleChangePrice}
           value={this.state.price}
           className="form-control form"
-          placeholder="Enter the product price"
-          onChange={this.handleChangeprice} />
+          placeholder={'0.00'}
+        />
         <i className="fas fa-coins icon-entry icon"></i>
         <input
           required
-          autoFocus
           type="text"
           value={this.state.units}
           className="form-control form"

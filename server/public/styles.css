@@ -13,17 +13,25 @@ body{
 }
 
 .title-container {
-  width: 50%;
+  width: 30%;
 
+}
+
+.header-padding {
+  height: 10%;
+  display: block;
 }
 
 .header-container {
   color: white;
-  background-color: black;
+  background-color: rgb(32, 32, 32);
   text-shadow: 1px 1px 5px black;
-  height: 20%;
+  height: 10%;
+  width: 100%;
   font-size: 3.5rem;
   z-index: 2;
+  position: fixed;
+  display: flex;
 }
 .header-entry-average {
   height: 100%;
@@ -44,16 +52,18 @@ body{
 
 .average-entry-box{
   font-size: 1.15rem;
-  background-color: gray;
+  color: black;
+  text-shadow: 0px 0px 0px black;
+  background-color: whitesmoke;
   line-height: 140%;
   box-shadow: 1px 2px 5px black;
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 .table{
   width: 60%;
   display: inline-table;
-  margin-top: 3%;
+  margin-top: 15%;
   margin-left: 2%;
 }
 
