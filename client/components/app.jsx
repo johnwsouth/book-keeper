@@ -3,6 +3,7 @@ import Header from './header';
 import EntryTable from './entries';
 import EntryForm from './entry-form';
 import Chart from './chart';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -79,12 +80,23 @@ class App extends React.Component {
   render() {
 
     return (
-      <React.Fragment>
-        <Header getProductAverage= {this.getProductAverage} getEntryAverage ={this.getEntryAverage}/>
-        <EntryTable entries = {this.state.entries} deleteEntry = {this.deleteEntry}/>
-        <EntryForm addEntry = {this.addEntry}/>
-        <Chart entries = {this.state.entries}/>
-      </React.Fragment>
+      <Router>
+        <Switch>
+          {/* <Route path="/graphs">
+            <Graphs />
+          </Route> */}
+          <Route path="/calendar">
+            <h1>I AM CALENDAR</h1>
+          </Route>
+          <Route path="/">
+            <Header getProductAverage={this.getProductAverage} getEntryAverage={this.getEntryAverage} />
+            <EntryTable entries={this.state.entries} deleteEntry={this.deleteEntry} />
+            <EntryForm addEntry={this.addEntry} />
+            <Chart entries={this.state.entries} />
+          </Route>
+        </Switch>
+
+      </Router>
     );
   }
 }
