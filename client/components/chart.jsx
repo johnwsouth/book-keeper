@@ -9,13 +9,7 @@ export default class Chart extends React.Component {
     };
     this.dataEntryTotal = this.dataEntryTotal.bind(this);
     this.dataEntryPricePerUnit = this.dataEntryPricePerUnit.bind(this);
-
-  }
-
-  onDomainChange(domain) {
-    this.setState({
-      zoomedXDomain: domain.x
-    });
+    this.dataSalesPerHour = this.dataSalesPerHour.bind(this);
   }
 
   dataEntryTotal() {
@@ -70,11 +64,39 @@ export default class Chart extends React.Component {
     return data;
   }
 
-  render() {
+  dataSalesPerHour() {
 
+    var datesArray = [];
+
+    this.props.entries.map(entry => {
+      var date = entry.entryTime.substring(0, entry.entryTime.indexOf('T'));
+      datesArray.push(date);
+    });
+    var tally = {};
+    var currentEntry;
+    for (var i = 0; i < datesArray.length; i++) {
+      currentEntry = datesArray[i];
+      tally[currentEntry] = (tally[currentEntry] || 0) + 1;
+    }
+    var dataArray = [];
+    var dates = Object.keys(tally);
+    for (i = 0; i < dates.length; i++) {
+      var key;
+      var value;
+      key = dates[i];
+      value = tally[key];
+
+      var newDataObj = { dates: key, sales: value, label: value };
+      dataArray.push(newDataObj);
+    }
+    return dataArray;
+  }
+
+  render() {
     if (this.props.entries[0] !== undefined) {
       var dataEntryTotal = this.dataEntryTotal();
       var dataEntryPricePerUnit = this.dataEntryPricePerUnit();
+      var dataEntrySalesPerHour = this.dataSalesPerHour();
 
       var largestEntryTotal = 0;
       for (var totalsIndex = 0; totalsIndex < dataEntryTotal.length; totalsIndex++) {
@@ -150,6 +172,37 @@ export default class Chart extends React.Component {
               }}
             />
           </ VictoryChart>
+
+          <VictoryChart
+            containerComponent={<VictoryZoomContainer
+              zoomDimension="x"
+              zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}
+            />}
+            domainPadding={{ x: 40 }}
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%' } }}>
+            <VictoryLabel text="Sales Per Day" x={225} y={5} textAnchor="middle" />
+            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+              data={dataEntrySalesPerHour}
+              // data accessor for x values
+              x='dates'
+              // data accessor for y values
+              y='sales'
+              animate={{ duration: 650 }}
+            />
+            <VictoryAxis
+              label="Dates"
+              style={{
+                axisLabel: { padding: 33 }
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Sales"
+              style={{
+                axisLabel: { padding: 35 }
+              }}
+            />
+          </ VictoryChart>
+
         </>
       );
     } else {
