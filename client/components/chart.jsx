@@ -9,6 +9,7 @@ export default class Chart extends React.Component {
     };
     this.dataEntryTotal = this.dataEntryTotal.bind(this);
     this.dataEntryPricePerUnit = this.dataEntryPricePerUnit.bind(this);
+    this.dataSalesPerDay = this.dataSalesPerDay.bind(this);
     this.dataSalesPerHour = this.dataSalesPerHour.bind(this);
   }
 
@@ -64,7 +65,7 @@ export default class Chart extends React.Component {
     return data;
   }
 
-  dataSalesPerHour() {
+  dataSalesPerDay() {
 
     var datesArray = [];
 
@@ -92,10 +93,38 @@ export default class Chart extends React.Component {
     return dataArray;
   }
 
+  dataSalesPerHour() {
+    var hoursArray = [];
+
+    this.props.entries.map(entry => {
+      var date = entry.entryTime.substring(entry.entryTime.indexOf('T') + 1);
+      hoursArray.push(date);
+    });
+    var tally = {};
+    var currentEntry;
+    for (var i = 0; i < hoursArray.length; i++) {
+      currentEntry = hoursArray[i].substring(0, 2);
+      tally[currentEntry] = (tally[currentEntry] || 0) + 1;
+    }
+    var dataArray = [];
+    var hours = Object.keys(tally);
+    for (i = 0; i < hours.length; i++) {
+      var key;
+      var value;
+      key = hours[i];
+      value = tally[key];
+
+      var newDataObj = { hours: (key + ':00'), sales: value, label: value };
+      dataArray.push(newDataObj);
+    }
+    return dataArray;
+  }
+
   render() {
     if (this.props.entries[0] !== undefined) {
       var dataEntryTotal = this.dataEntryTotal();
       var dataEntryPricePerUnit = this.dataEntryPricePerUnit();
+      var dataEntrySalesPerDay = this.dataSalesPerDay();
       var dataEntrySalesPerHour = this.dataSalesPerHour();
 
       var largestEntryTotal = 0;
@@ -182,7 +211,7 @@ export default class Chart extends React.Component {
             style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%' } }}>
             <VictoryLabel text="Sales Per Day" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
-              data={dataEntrySalesPerHour}
+              data={dataEntrySalesPerDay}
               // data accessor for x values
               x='dates'
               // data accessor for y values
@@ -191,6 +220,36 @@ export default class Chart extends React.Component {
             />
             <VictoryAxis
               label="Dates"
+              style={{
+                axisLabel: { padding: 33 }
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Sales"
+              style={{
+                axisLabel: { padding: 35 }
+              }}
+            />
+          </ VictoryChart>
+
+          <VictoryChart
+            containerComponent={<VictoryZoomContainer
+              zoomDimension="x"
+              zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}
+            />}
+            domainPadding={{ x: 40 }}
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%', paddingBottom: '5%' } }}>
+            <VictoryLabel text="Sales Per Hour" x={225} y={5} textAnchor="middle" />
+            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+              data={dataEntrySalesPerHour}
+              // data accessor for x values
+              x='hours'
+              // data accessor for y values
+              y='sales'
+              animate={{ duration: 650 }}
+            />
+            <VictoryAxis
+              label="Hours"
               style={{
                 axisLabel: { padding: 33 }
               }}
