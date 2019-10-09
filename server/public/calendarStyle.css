@@ -128,7 +128,7 @@ div.calendar-controls .today {
   position: absolute;
   right: 15px;
   line-height: 35px;
-  font-size: 0.6em;
+  font-size: 0.4em;
   text-transform: uppercase;
 }
 
@@ -163,13 +163,15 @@ h1 {
 }
 
 a {
-  color: #B10909;
+  color: rgb(255, 255, 255);
   font-weight: bolder;
   text-decoration: none;
 }
 
-a.demoLink {
-  text-decoration: underline;
+
+a:hover{
+  color: rgb(255, 123, 0);
+  text-decoration: rosybrown
 }
 
 div.options {
