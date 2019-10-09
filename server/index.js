@@ -1,5 +1,6 @@
 require('dotenv/config');
 const express = require('express');
+const path = require('path');
 const connection = require('./connection');
 const entries = require('./entries');
 const bodyParser = require('body-parser');
@@ -12,6 +13,9 @@ let PORT = process.env.PORT;
 connection.connect();
 
 server.use('/api/entries', entries);
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 server.use((err, req, res, next) => {
   console.error(err);
