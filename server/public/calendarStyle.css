@@ -4,7 +4,10 @@ body {
 }
 
 table.calendar {
+  position: absolute;
   border-collapse: collapse;
+  top: 20%;
+  left: 13%;
 }
 
 table.calendar thead {
@@ -143,8 +146,7 @@ div#calendar {
 }
 
 div#root {
-  display: table;
-  margin: 50px auto;
+  /* display: table; */
 }
 
 h2,h3,h4,h5 {
