@@ -15,7 +15,7 @@ function Header(props) {
           {!isNaN(props.getProductAverage()) && <div className="header-entry-average text-right d-inline-block ml-5 mr-5">Product Average Price: <div className="average-entry-box d-inline-block badge">{'$ ' + (props.getProductAverage() / 100).toFixed(2)}</div></div>}
         </div>
         <i className="far fa-chart-bar mr-5 mt-4"></i>
-        <i className="far fa-calendar-alt mr-5 mt-4"></i>
+        <Link to='/calendar'><i className="far fa-calendar-alt mr-5 mt-4"></i></Link>
       </div>
     </div>
   );
