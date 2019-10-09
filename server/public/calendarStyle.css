@@ -104,6 +104,9 @@ div.calendar-controls {
   display: table;
   font-size: 25px;
   line-height: 35px;
+  position: absolute;
+  left: 13%;
+  top: 15%;
 }
 
 div.calendar-controls div {

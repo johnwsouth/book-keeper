@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar } from 'react-yearly-calendar';
+import { Calendar, CalendarControls } from 'react-yearly-calendar';
 /* CalendarControls */
 
 export default class CalendarContainer extends React.Component {
@@ -21,7 +21,10 @@ export default class CalendarContainer extends React.Component {
         <Calendar
           year={2019}
           onPickDate={this.onDatePicked}
+          showWeekSeparators= {true}
         />
+        <CalendarControls showTodayButton= {true}/>
+
       </div>);
   }
 }
