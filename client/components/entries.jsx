@@ -8,7 +8,7 @@ function Entry(props) {
   return (
     <tr key={props.entry.entryID}>
       <td>{props.entry.entryName}</td>
-      <td>{'$ ' + (parseFloat(props.entry.entryPrice / 100))}</td>
+      <td>{'$ ' + (parseFloat(props.entry.entryPrice / 100).toFixed(2))}</td>
       <td>{props.entry.entryUnits}</td>
       <td>{newEntryDate + ' - ' + newEntryTime}</td>
       <td className ="operation-cell"><button data-key={props.entry.entryID} className = "btn btn-secondary" onClick={props.deleteEntry}>Delete</button></td>

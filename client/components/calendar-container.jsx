@@ -1,8 +1,8 @@
 import React from 'react';
 import { Calendar, CalendarControls } from 'react-yearly-calendar';
-/* CalendarControls */
+import { withRouter } from 'react-router-dom';
 
-export default class CalendarContainer extends React.Component {
+class CalendarContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ export default class CalendarContainer extends React.Component {
   }
 
   onDatePicked(date) {
-    alert(date);
+    this.props.history.push(`/details/${date._i[0] + '' + date._i[1] + date._i[2]}`);
   }
 
   render() {
@@ -23,8 +23,10 @@ export default class CalendarContainer extends React.Component {
           onPickDate={this.onDatePicked}
           showWeekSeparators= {true}
         />
-        <CalendarControls showTodayButton= {true}/>
+        <CalendarControls year = {2019}/>
 
       </div>);
   }
 }
+
+export default withRouter(CalendarContainer);
