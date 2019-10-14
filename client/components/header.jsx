@@ -7,7 +7,7 @@ function Header(props) {
       <div className="header-container">
         <div className="title-container d-inline-block ml-5">
           <div className="header-title text-left d-inline-block"><Link to="/">Book Master</Link></div>
-          <img className ="book-master" src="./images/bookMaster.png" alt=""/>
+          <img className ="book-master" src="/images/bookMaster.png" alt=""/>
         </div>
 
         <div className="entry-average text-right">

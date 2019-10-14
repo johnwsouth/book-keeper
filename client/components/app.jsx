@@ -4,6 +4,7 @@ import EntryTable from './entries';
 import EntryForm from './entry-form';
 import Chart from './chart';
 import CalendarContainer from './calendar-container';
+import DateDetails from './date-details';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -84,11 +85,9 @@ class App extends React.Component {
       <Router>
         <Header getProductAverage={this.getProductAverage} getEntryAverage={this.getEntryAverage} />
         <Switch>
-          {/* <Route path="/graphs">
-            <Graphs />
-          </Route> */}
-          <Route path="/calendar">
-            <CalendarContainer />
+
+          <Route path="/details/:date"> <DateDetails /></Route>
+          <Route path="/calendar" component ={CalendarContainer}>
           </Route>
           <Route path="/">
             <EntryTable entries={this.state.entries} deleteEntry={this.deleteEntry} />
@@ -96,7 +95,6 @@ class App extends React.Component {
             <Chart entries={this.state.entries} />
           </Route>
         </Switch>
-
       </Router>
     );
   }
