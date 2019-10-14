@@ -12,7 +12,21 @@ class CalendarContainer extends React.Component {
   }
 
   onDatePicked(date) {
-    this.props.history.push(`/details/${date._i[0] + '' + date._i[1] + date._i[2]}`);
+    var chosenMonth = date._i[1] + 1;
+    var chosenDay = date._i[2];
+    var newMonth;
+    var newDay;
+    if (chosenMonth < 10) {
+      newMonth = '0' + chosenMonth;
+    } else {
+      newMonth = '' + chosenMonth;
+    }
+    if (chosenDay < 10) {
+      newDay = '0' + chosenDay;
+    } else {
+      newDay = '' + chosenDay;
+    }
+    this.props.history.push(`/details/${'' + date._i[0] + '-' + newMonth + '-' + newDay}`);
   }
 
   render() {

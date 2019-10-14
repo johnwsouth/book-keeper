@@ -35,10 +35,21 @@ router.post('/', jsonParser, (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   connection.execute('DELETE FROM entries WHERE entryID = ' + req.params.id, (err, rows, next) => {
     if (err) return next(err);
+
     req.on('error', function (err) {
       if (err) return next(err);
     });
     res.status(200);
+  });
+});
+
+router.get('/day/:date', (req, res, next) => {
+  connection.query('SELECT * FROM entries WHERE entryTime LIKE ?', req.params.date + '%', (err, rows, next) => {
+    if (err) return next(err);
+    req.on('error', function (err) {
+      if (err) return next(err);
+    });
+    res.json(rows);
   });
 });
 
