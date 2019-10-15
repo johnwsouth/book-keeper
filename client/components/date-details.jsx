@@ -10,6 +10,7 @@ class DateDetails extends React.Component {
       dateEntries: []
     };
     this.getDaySales = this.getDaySales.bind(this);
+    this.dataDaySales = this.dataDaySales.bind(this);
   }
 
   componentDidMount() {
@@ -26,26 +27,44 @@ class DateDetails extends React.Component {
       });
   }
 
-  render() {
+  dataDaySales() {
+    var timesArray = [];
 
-    return (
+    this.state.dateEntries.map(entry => {
+      var time = entry.entryTime.substring(entry.entryTime.indexOf('T') + 1, entry.entryTime.indexOf('T') + 3);
+      timesArray.push(time);
+    });
+    var tally = {};
+    var currentEntry;
+    for (var i = 0; i < timesArray.length; i++) {
+      currentEntry = timesArray[i];
+      tally[currentEntry] = (tally[currentEntry] || 0) + 1;
+    }
+    var dataArray = [];
+    var times = Object.keys(tally);
+    for (i = 0; i < times.length; i++) {
+      var key;
+      var value;
+      key = times[i];
+      value = tally[key];
+
+      var newDataObj = { hour: key, sales: value, label: value };
+      dataArray.push(newDataObj);
+    }
+    return dataArray;
+  }
+
+  render() {
+    if (this.state.dateEntries.length > 0) {
+      var daySalesData = this.dataDaySales();
+    }
+    if (daySalesData) {
+
+      return (
       <>
         <VictoryChart height={200} width ={600} style={{ parent: { height: '30vh', maxWidth: '70%', position: 'absolute', left: '15%', top: '10%' } }}>
           <VictoryLine
-            data={[
-              { hour: '0:00', sales: 1 },
-              { hour: '1:00', sales: 2 },
-              { hour: '2:00', sales: 3 },
-              { hour: '3:00', sales: 5 },
-              { hour: '4:00', sales: 0 },
-              { hour: '5:00', sales: 7 },
-              { hour: '6:00', sales: 4 },
-              { hour: '7:00', sales: 8 },
-              { hour: '8:00', sales: 4 },
-              { hour: '9:00', sales: 7 },
-              { hour: '10:00', sales: 2 },
-              { hour: '11:00', sales: 4 }
-            ]}
+            data={daySalesData}
             // data accessor for x values
             x='hour'
             // data accessor for y values
@@ -103,7 +122,10 @@ class DateDetails extends React.Component {
         </VictoryChart>
         <h1 style={{ position: 'absolute', top: '50%' }}>Im the date {this.props.match.params.date}</h1>
       </>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 

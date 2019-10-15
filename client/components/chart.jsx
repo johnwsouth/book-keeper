@@ -87,7 +87,7 @@ export default class Chart extends React.Component {
       key = dates[i];
       value = tally[key];
 
-      var newDataObj = { dates: key, sales: value, label: value };
+      var newDataObj = { dates: key.substring(5), sales: value, label: value };
       dataArray.push(newDataObj);
     }
     return dataArray;
@@ -114,7 +114,7 @@ export default class Chart extends React.Component {
       key = hours[i];
       value = tally[key];
 
-      var newDataObj = { hours: (key + ':00'), sales: value, label: value };
+      var newDataObj = { hours: key, sales: value, label: value };
       dataArray.push(newDataObj);
     }
     return dataArray;
