@@ -38,6 +38,7 @@ export default class Chart extends React.Component {
       });
 
     }
+
     return data;
 
   }
@@ -142,10 +143,12 @@ export default class Chart extends React.Component {
           largestEntryUnit = dataEntryPricePerUnit[unitsIndex]['Entry Totals'];
         }
       }
+
       return (
         <>
           <VictoryChart
             containerComponent={<VictoryZoomContainer
+              allowZoom = {false}
               zoomDimension="x"
               zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
             />}
@@ -176,6 +179,7 @@ export default class Chart extends React.Component {
 
           <VictoryChart
             containerComponent={<VictoryZoomContainer
+              allowZoom={false}
               zoomDimension="x"
               zoomDomain={{ x: [0, 7], y: [0, largestEntryUnit * 1.2] }}
             />}
@@ -206,11 +210,12 @@ export default class Chart extends React.Component {
 
           <VictoryChart
             containerComponent={<VictoryZoomContainer
+              allowZoom={false}
               zoomDimension="x"
               zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
             />}
             domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '3%' } }}>
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '3%', marginBottom: '4%' } }}>
             <VictoryLabel text="Sales Per Day" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
               data={dataEntrySalesPerDay}
@@ -236,6 +241,7 @@ export default class Chart extends React.Component {
 
           <VictoryChart
             containerComponent={<VictoryZoomContainer
+              allowZoom={false}
               zoomDimension="x"
               zoomDomain={{ x: [0, 12], y: [0, largestEntryTotal * 1.2] }}
             />}
