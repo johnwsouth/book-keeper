@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { VictoryLine, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
 
 class DateDetails extends React.Component {
   constructor(props) {
@@ -51,26 +51,64 @@ class DateDetails extends React.Component {
       var newDataObj = { hour: key, sales: value, label: value };
       dataArray.push(newDataObj);
     }
-    return dataArray;
+    for (i = 0; i < 24; i++) {
+      if (dataArray[i]) {
+        if (parseInt(dataArray[i].hour) !== i) {
+          if (i < 10) {
+            dataArray.push({ hour: ('0' + i), sales: 0 });
+          } else {
+            dataArray.push({ hour: (i), sales: 0 });
+          }
+        }
+      }
+    }
+    dataArray.sort((objA, objB) => (objA.hour > objB.hour) ? 1 : -1);
+    var dataArrayFirst = [];
+    var dataArraySecond = [];
+
+    dataArray.map(data => {
+      if (parseInt(data.hour) < 12) {
+        dataArrayFirst.push(data);
+      } else {
+        dataArraySecond.push(data);
+      }
+    });
+
+    var dataArrayTotal = [];
+    dataArrayTotal.push(dataArrayFirst);
+    dataArrayTotal.push(dataArraySecond);
+    return dataArrayTotal;
   }
 
   render() {
+
     if (this.state.dateEntries.length > 0) {
       var daySalesData = this.dataDaySales();
+      var daySalesFirst;
+      var daySalesSecond;
+      if (daySalesData.length === 2) {
+        daySalesFirst = daySalesData[0];
+        daySalesSecond = daySalesData[1];
+      } else if (parseInt(daySalesData[0][0].hour) < 12) {
+        daySalesFirst = daySalesData[0];
+      } else {
+        daySalesSecond = daySalesData[0];
+      }
     }
     if (daySalesData) {
 
       return (
       <>
         <VictoryChart height={200} width ={600} style={{ parent: { height: '30vh', maxWidth: '70%', position: 'absolute', left: '15%', top: '10%' } }}>
-          <VictoryLine
-            data={daySalesData}
+          <VictoryBar
+            data={daySalesFirst}
             // data accessor for x values
             x='hour'
             // data accessor for y values
             y='sales'
             animate={{ duration: 650 }}/>
           <VictoryAxis
+            tickValues={['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11']}
             label="Hour"
             style={{
               axisLabel: { fontSize: 10, padding: 30 }
@@ -86,27 +124,15 @@ class DateDetails extends React.Component {
         </VictoryChart>
 
         <VictoryChart height={200} width={600} style={{ parent: { height: '30vh', maxWidth: '70%', position: 'absolute', left: '15%', top: '50%' } }}>
-          <VictoryLine
-            data={[
-              { hour: '12:00', sales: 6 },
-              { hour: '13:00', sales: 2 },
-              { hour: '14:00', sales: 4 },
-              { hour: '15:00', sales: 6 },
-              { hour: '16:00', sales: 0 },
-              { hour: '17:00', sales: 4 },
-              { hour: '18:00', sales: 8 },
-              { hour: '19:00', sales: 2 },
-              { hour: '20:00', sales: 1 },
-              { hour: '21:00', sales: 6 },
-              { hour: '22:00', sales: 3 },
-              { hour: '23:00', sales: 5 }
-            ]}
+          <VictoryBar
+            data={daySalesSecond}
             // data accessor for x values
             x='hour'
             // data accessor for y values
             y='sales'
             animate={{ duration: 650 }} />
           <VictoryAxis
+            tickValues={['12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']}
             label="Hour"
             style={{
               axisLabel: { fontSize: 10, padding: 30 }
