@@ -51,9 +51,17 @@ class DateDetails extends React.Component {
       var newDataObj = { hour: key, sales: value, label: value };
       dataArray.push(newDataObj);
     }
+    var hasHour = false;
     for (i = 0; i < 24; i++) {
       if (dataArray[i]) {
-        if (parseInt(dataArray[i].hour) !== i) {
+        for (var j = 0; j < 24; j++) {
+          if (dataArray[j]) {
+            if (parseInt(dataArray[j].hour) === i) {
+              hasHour = true;
+            }
+          }
+        }
+        if (!hasHour) {
           if (i < 10) {
             dataArray.push({ hour: ('0' + i), sales: 0 });
           } else {
@@ -82,10 +90,10 @@ class DateDetails extends React.Component {
 
   render() {
 
-    if (this.state.dateEntries.length > 0) {
+    if (this.state.dateEntries.length) {
       var daySalesData = this.dataDaySales();
-      var daySalesFirst;
-      var daySalesSecond;
+      var daySalesFirst = [];
+      var daySalesSecond = [];
       if (daySalesData.length === 2) {
         daySalesFirst = daySalesData[0];
         daySalesSecond = daySalesData[1];
@@ -94,12 +102,33 @@ class DateDetails extends React.Component {
       } else {
         daySalesSecond = daySalesData[0];
       }
-    }
-    if (daySalesData) {
 
+      var largestEntryFirst = 0;
+      for (var totalsIndex = 0; totalsIndex < daySalesFirst.length; totalsIndex++) {
+        if (daySalesFirst[totalsIndex].sales > largestEntryFirst) {
+          largestEntryFirst = daySalesFirst[totalsIndex].sales;
+        }
+      }
+
+      var largestEntrySecond = 0;
+      for (totalsIndex = 0; totalsIndex < daySalesSecond.length; totalsIndex++) {
+        if (daySalesSecond[totalsIndex].sales > largestEntrySecond) {
+          largestEntrySecond = daySalesSecond[totalsIndex].sales;
+        }
+      }
+    }
+
+    if (daySalesData) {
       return (
       <>
-        <VictoryChart height={200} width ={600} style={{ parent: { height: '30vh', maxWidth: '70%', position: 'absolute', left: '15%', top: '10%' } }}>
+        <VictoryChart domainPadding = {{ x: 35 }}
+          domain={{ y: [0, (largestEntryFirst * 1.2 || 2)] }}
+          height={200} width ={600}
+          style={{ parent: { height: '30vh',
+            maxWidth: '70%',
+            position: 'absolute',
+            left: '15%',
+            top: '10%' } }}>
           <VictoryBar
             data={daySalesFirst}
             // data accessor for x values
@@ -123,34 +152,40 @@ class DateDetails extends React.Component {
           />
         </VictoryChart>
 
-        <VictoryChart height={200} width={600} style={{ parent: { height: '30vh', maxWidth: '70%', position: 'absolute', left: '15%', top: '50%' } }}>
-          <VictoryBar
-            data={daySalesSecond}
-            // data accessor for x values
-            x='hour'
-            // data accessor for y values
-            y='sales'
-            animate={{ duration: 650 }} />
-          <VictoryAxis
-            tickValues={['12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']}
-            label="Hour"
-            style={{
-              axisLabel: { fontSize: 10, padding: 30 }
+          <VictoryChart domainPadding={{ x: 35 }}
+            domain={{ y: [0, (largestEntrySecond * 1.2 || 2)] }}
+            height={200} width={600}
+            style={{ parent: { height: '30vh',
+              maxWidth: '70%',
+              position: 'absolute',
+              left: '15%',
+              top: '50%' } }}>
+            <VictoryBar
+              data={daySalesSecond}
+              // data accessor for x values
+              x='hour'
+              // data accessor for y values
+              y='sales'
+              animate={{ duration: 650 }} />
+            <VictoryAxis
+              tickValues={['12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']}
+              label="Hour"
+              style={{
+                axisLabel: { fontSize: 10, padding: 30 }
 
-            }}
-          />
-          <VictoryAxis dependentAxis
-            label="Sales"
-            style={{
-              axisLabel: { fontSize: 10, padding: 35 }
-            }}
-          />
-        </VictoryChart>
-        <h1 style={{ position: 'absolute', top: '50%' }}>Im the date {this.props.match.params.date}</h1>
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Sales"
+              style={{
+                axisLabel: { fontSize: 10, padding: 35 }
+              }}
+            />
+          </VictoryChart>
       </>
       );
     } else {
-      return null;
+      return <h1 style={{ fontSize: '4rem', position: 'absolute', right: '22%', top: '45%' }}>No sales were made on {this.props.match.params.date}</h1>;
     }
   }
 }
