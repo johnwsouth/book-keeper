@@ -1,5 +1,6 @@
 import React from 'react';
 import { VictoryLabel, VictoryBar, VictoryAxis, VictoryChart, VictoryZoomContainer } from 'victory';
+import AppContext from '../context';
 
 export default class Chart extends React.Component {
   constructor(props) {
@@ -16,24 +17,24 @@ export default class Chart extends React.Component {
   dataEntryTotal() {
     const data = [];
 
-    for (var i = 0; i < this.props.entries.length; i++) {
+    for (var i = 0; i < this.context.entries.length; i++) {
       var entryAbbrevNameIndex;
-      if (this.props.entries[i].entryName.indexOf(' ') > 1) {
-        if (this.props.entries[i].entryName.indexOf(' ') > 4) {
+      if (this.context.entries[i].entryName.indexOf(' ') > 1) {
+        if (this.context.entries[i].entryName.indexOf(' ') > 4) {
           entryAbbrevNameIndex = 6;
         } else {
-          entryAbbrevNameIndex = this.props.entries[i].entryName.indexOf(' ') + 2;
+          entryAbbrevNameIndex = this.context.entries[i].entryName.indexOf(' ') + 2;
         }
-      } else if (this.props.entries[i].entryName.length <= 6) {
-        entryAbbrevNameIndex = this.props.entries[i].entryName.length;
-      } else if (this.props.entries[i].entryName.length > 6) {
+      } else if (this.context.entries[i].entryName.length <= 6) {
+        entryAbbrevNameIndex = this.context.entries[i].entryName.length;
+      } else if (this.context.entries[i].entryName.length > 6) {
         entryAbbrevNameIndex = 6;
       }
 
       data.push({
-        'Entries': this.props.entries[i].entryName.substring(0, entryAbbrevNameIndex),
-        'Entry Totals': parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100),
-        'label': parseFloat(this.props.entries[i].entryPrice * this.props.entries[i].entryUnits / 100)
+        'Entries': this.context.entries[i].entryName.substring(0, entryAbbrevNameIndex),
+        'Entry Totals': parseFloat(this.context.entries[i].entryPrice * this.context.entries[i].entryUnits / 100),
+        'label': parseFloat(this.context.entries[i].entryPrice * this.context.entries[i].entryUnits / 100)
       });
 
     }
@@ -43,23 +44,23 @@ export default class Chart extends React.Component {
 
   dataEntryPricePerUnit() {
     const data = [];
-    for (var i = 0; i < this.props.entries.length; i++) {
+    for (var i = 0; i < this.context.entries.length; i++) {
       var entryAbbrevNameIndex;
-      if (this.props.entries[i].entryName.indexOf(' ') > 1) {
-        if (this.props.entries[i].entryName.indexOf(' ') > 4) {
+      if (this.context.entries[i].entryName.indexOf(' ') > 1) {
+        if (this.context.entries[i].entryName.indexOf(' ') > 4) {
           entryAbbrevNameIndex = 6;
         } else {
-          entryAbbrevNameIndex = this.props.entries[i].entryName.indexOf(' ') + 2;
+          entryAbbrevNameIndex = this.context.entries[i].entryName.indexOf(' ') + 2;
         }
-      } else if (this.props.entries[i].entryName.length <= 6) {
-        entryAbbrevNameIndex = this.props.entries[i].entryName.length;
-      } else if (this.props.entries[i].entryName.length > 6) {
+      } else if (this.context.entries[i].entryName.length <= 6) {
+        entryAbbrevNameIndex = this.context.entries[i].entryName.length;
+      } else if (this.context.entries[i].entryName.length > 6) {
         entryAbbrevNameIndex = 6;
       }
       data.push({
-        'Entries': this.props.entries[i].entryName.substring(0, entryAbbrevNameIndex),
-        'Entry Totals': parseFloat(this.props.entries[i].entryPrice / 100),
-        'label': parseFloat(this.props.entries[i].entryPrice / 100)
+        'Entries': this.context.entries[i].entryName.substring(0, entryAbbrevNameIndex),
+        'Entry Totals': parseFloat(this.context.entries[i].entryPrice / 100),
+        'label': parseFloat(this.context.entries[i].entryPrice / 100)
       });
     }
     return data;
@@ -69,7 +70,7 @@ export default class Chart extends React.Component {
 
     var datesArray = [];
 
-    this.props.entries.map(entry => {
+    this.context.entries.map(entry => {
       var date = entry.entryTime.substring(0, entry.entryTime.indexOf('T'));
       datesArray.push(date);
     });
@@ -96,7 +97,7 @@ export default class Chart extends React.Component {
   dataSalesPerHour() {
     var hoursArray = [];
 
-    this.props.entries.map(entry => {
+    this.context.entries.map(entry => {
       var date = entry.entryTime.substring(entry.entryTime.indexOf('T') + 1);
       hoursArray.push(date);
     });
@@ -122,7 +123,7 @@ export default class Chart extends React.Component {
   }
 
   render() {
-    if (this.props.entries[0] !== undefined) {
+    if (this.context.entries !== undefined) {
       var dataEntryTotal = this.dataEntryTotal();
       var dataEntryPricePerUnit = this.dataEntryPricePerUnit();
       var dataEntrySalesPerDay = this.dataSalesPerDay();
@@ -143,43 +144,43 @@ export default class Chart extends React.Component {
       }
       return (
         <>
-            <VictoryChart
-              containerComponent={<VictoryZoomContainer
-                zoomDimension="x"
-                zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}
-              />}
-              domainPadding={{ x: 40 }}
-              style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%' } }}>
-              <VictoryLabel text="Price per Entry" x={225} y={5} textAnchor="middle"/>
-              <VictoryBar style={{ parent: { maxWidth: '50%' } }}
-                data={dataEntryTotal}
-                // data accessor for x values
-                x='Entries'
-                // data accessor for y values
-                y='Entry Totals'
-                animate={{ duration: 650 }}
-              />
-              <VictoryAxis
-                label="Entries"
-                style={{
-                  axisLabel: { padding: 33 }
-                }}
-              />
-              <VictoryAxis dependentAxis
-                label="Entry Total Cost"
-                style={{
-                  axisLabel: { padding: 35 }
-                }}
-              />
-            </ VictoryChart>
+          <VictoryChart
+            containerComponent={<VictoryZoomContainer
+              zoomDimension="x"
+              zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
+            />}
+            domainPadding={{ x: 40 }}
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '10%' } }}>
+            <VictoryLabel text="Price per Entry" x={225} y={5} textAnchor="middle"/>
+            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+              data={dataEntryTotal}
+              // data accessor for x values
+              x='Entries'
+              // data accessor for y values
+              y='Entry Totals'
+              animate={{ duration: 650 }}
+            />
+            <VictoryAxis
+              label="Entries"
+              style={{
+                axisLabel: { padding: 33 }
+              }}
+            />
+            <VictoryAxis dependentAxis
+              label="Entry Total Cost"
+              style={{
+                axisLabel: { padding: 35 }
+              }}
+            />
+          </ VictoryChart>
 
           <VictoryChart
             containerComponent={<VictoryZoomContainer
               zoomDimension="x"
-              zoomDomain={{ y: [0, largestEntryUnit * 1.2] }}
+              zoomDomain={{ x: [0, 7], y: [0, largestEntryUnit * 1.2] }}
             />}
             domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '32%', display: 'inline-block', marginBottom: '5%' } }}>
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '5%', marginTop: '10%' } }}>
             <VictoryLabel text="Price per Unit" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
               data={dataEntryPricePerUnit}
@@ -206,10 +207,10 @@ export default class Chart extends React.Component {
           <VictoryChart
             containerComponent={<VictoryZoomContainer
               zoomDimension="x"
-              zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}
+              zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
             />}
             domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%' } }}>
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '3%' } }}>
             <VictoryLabel text="Sales Per Day" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
               data={dataEntrySalesPerDay}
@@ -236,10 +237,10 @@ export default class Chart extends React.Component {
           <VictoryChart
             containerComponent={<VictoryZoomContainer
               zoomDimension="x"
-              zoomDomain={{ y: [0, largestEntryTotal * 1.2] }}
+              zoomDomain={{ x: [0, 12], y: [0, largestEntryTotal * 1.2] }}
             />}
             domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', 'paddingLeft': '50px', paddingTop: '2%', paddingBottom: '5%' } }}>
+            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '5%', marginTop: '3%' } }}>
             <VictoryLabel text="Sales Per Hour" x={225} y={5} textAnchor="middle" />
             <VictoryBar style={{ parent: { maxWidth: '50%' } }}
               data={dataEntrySalesPerHour}
@@ -262,7 +263,6 @@ export default class Chart extends React.Component {
               }}
             />
           </ VictoryChart>
-
         </>
       );
     } else {
@@ -270,3 +270,5 @@ export default class Chart extends React.Component {
     }
   }
 }
+
+Chart.contextType = AppContext;
