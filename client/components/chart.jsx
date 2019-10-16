@@ -117,6 +117,7 @@ export default class Chart extends React.Component {
       var newDataObj = { hours: key, sales: value, label: value };
       dataArray.push(newDataObj);
     }
+    dataArray.sort((objA, objB) => (objA.hours > objB.hours) ? 1 : -1);
     return dataArray;
   }
 
