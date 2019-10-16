@@ -1,3 +1,4 @@
+import AppContext from '../context';
 import React from 'react';
 import Header from './header';
 import EntryTable from './entries';
@@ -80,22 +81,25 @@ class App extends React.Component {
   }
 
   render() {
-
+    var appContext = {
+      entries: this.state.entries
+    };
     return (
-      <Router>
-        <Header getProductAverage={this.getProductAverage} getEntryAverage={this.getEntryAverage} />
-        <Switch>
+      <AppContext.Provider value={appContext} >
+        <Router>
+          <Header getProductAverage={this.getProductAverage} getEntryAverage={this.getEntryAverage} />
+          <Switch>
 
-          <Route path="/details/:date"> <DateDetails /></Route>
-          <Route path="/calendar" component ={CalendarContainer}>
-          </Route>
-          <Route path="/">
-            <EntryTable entries={this.state.entries} deleteEntry={this.deleteEntry} />
-            <EntryForm addEntry={this.addEntry} />
-            <Chart entries={this.state.entries} />
-          </Route>
-        </Switch>
-      </Router>
+            <Route path="/details/:date"> <DateDetails /></Route>
+            <Route path="/calendar" component ={CalendarContainer}/>
+            <Route exact path="/chart" component={Chart}/>
+            <Route path="/">
+              <EntryTable entries={this.state.entries} deleteEntry={this.deleteEntry} />
+              <EntryForm addEntry={this.addEntry} />
+            </Route>
+          </Switch>
+        </Router>
+      </AppContext.Provider>
     );
   }
 }
