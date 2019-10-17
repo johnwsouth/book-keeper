@@ -19,6 +19,7 @@ class App extends React.Component {
     this.addEntry = this.addEntry.bind(this);
     this.deleteEntry = this.deleteEntry.bind(this);
     this.getProductAverage = this.getProductAverage.bind(this);
+    this.getTodaysEntries = this.getTodaysEntries.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +53,14 @@ class App extends React.Component {
       });
   }
 
+  getTodaysEntries() {
+    fetch('/api/entries/today')
+      .then(res => res.json())
+      .then(jsonRes => {
+        this.setState({ entries: jsonRes });
+      });
+  }
+
   addEntry(newEntry) {
     fetch('/api/entries', {
       method: 'POST',
@@ -82,7 +91,9 @@ class App extends React.Component {
 
   render() {
     var appContext = {
-      entries: this.state.entries
+      entries: this.state.entries,
+      getAllEntries: this.getAllEntries,
+      getTodaysEntries: this.getTodaysEntries
     };
     return (
       <AppContext.Provider value={appContext} >
@@ -94,7 +105,7 @@ class App extends React.Component {
             <Route path="/calendar" component ={CalendarContainer}/>
             <Route exact path="/chart" component={Chart}/>
             <Route path="/">
-              <EntryTable entries={this.state.entries} deleteEntry={this.deleteEntry} />
+              <EntryTable deleteEntry={this.deleteEntry} />
               <EntryForm addEntry={this.addEntry} />
             </Route>
           </Switch>
