@@ -47,6 +47,7 @@ export default class EntryTable extends React.Component {
               ? <DropdownItem disabled>{this.state.currentTable}</DropdownItem>
               : <DropdownItem onClick={() => {
                 this.context.getAllEntries();
+                this.context.currentTable = 'All Entries';
                 this.setState({ currentTable: 'All Entries' });
               }}>{'All Entries'} </DropdownItem>}
 
@@ -55,6 +56,7 @@ export default class EntryTable extends React.Component {
               ? <DropdownItem disabled>{this.state.currentTable}</DropdownItem>
               : <DropdownItem onClick={() => {
                 this.context.getTodaysEntries();
+                this.context.currentTable = "Today's Entries";
                 this.setState({ currentTable: "Today's Entries" });
               }}> {this.state.otherTables[0]} </DropdownItem>}
 

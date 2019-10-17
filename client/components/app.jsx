@@ -12,7 +12,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      entries: []
+      entries: [],
+      currentTable: 'All Entries'
     };
     this.getAllEntries = this.getAllEntries.bind(this);
     this.getEntryAverage = this.getEntryAverage.bind(this);
@@ -92,6 +93,7 @@ class App extends React.Component {
   render() {
     var appContext = {
       entries: this.state.entries,
+      currentTable: 'All Entries',
       getAllEntries: this.getAllEntries,
       getTodaysEntries: this.getTodaysEntries
     };
