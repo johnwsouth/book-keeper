@@ -56,24 +56,24 @@ body{
 }
 
 .table{
-  width: 60%;
+  width: 100vmin;
   display: inline-table;
-  margin-top: 15%;
-  margin-left: 2%;
+  margin-top: 12vmin;
+  margin-left: 5vmin;
 }
 
 .form-container{
   width: 26%;
   position: fixed;
   display: inline-block;
-  top: 20%;
-  right: 5%
+  top: 14vmin;
+  right: 15vmin
 }
 
 .form{
-  height: 40px;
-  display: block;
-  margin-top: 10px;
+  height: 4.5vmin;
+  display: inline-block;
+  margin-top: 1.5vmin;
 }
 
 .table-form{
