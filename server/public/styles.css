@@ -11,7 +11,7 @@ body{
 }
 
 .title-container {
-  width: 30%;
+  width: 45vmin;
 
 }
 
@@ -29,19 +29,21 @@ body{
 }
 .header-entry-average {
   height: 100%;
-  font-size: 1.15rem;
+  font-size: 2vmin;
+  display: inline-block;
 }
 
 .book-master{
-  height: 8vmin;
+  height: 9.5vmin;
   margin-left: 1%;
   margin-bottom: 1%;
 }
 
 
 .entry-average{
+  display: inline-block;
   line-height: 120%;
-  height: 100px;
+  height: 10vmin;
 }
 
 .average-entry-box{
@@ -84,7 +86,7 @@ body{
   display: inline-block;
   position: absolute;
   left: -10%;
-  font-size: 1.5rem;
+  font-size: 2.5vmin;
 }
 
 .icon-name {
@@ -98,21 +100,13 @@ body{
   top:59%;
 }
 
-.operation-cell {
-  display: flex;
-
-}
-
 .react-datepicker-wrapper {
   position: fixed;
-  top: 3.5%;
-  right: 8%;
+  top: 3.5vmin;
+  right: 24vmin;
   z-index: 4
 }
 
-.react-datepicker-popper{
-  z-index: 100;
-}
 
 .nav-icon {
   font-size: 5vmin;
