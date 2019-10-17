@@ -23,9 +23,7 @@ export default class EntryTable extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false,
-      currentTable: 'All Entries',
-      otherTables: ["Today's Entries"]
+      dropdownOpen: false
     };
   }
 
@@ -40,25 +38,23 @@ export default class EntryTable extends React.Component {
       <div>
         <Dropdown style={{ display: 'fixed', position: 'absolute', left: '2%', top: '20%' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle caret>
-            {this.state.currentTable}
+            {this.context.currentTable}
           </DropdownToggle>
           <DropdownMenu>
-            {this.state.currentTable === 'All Entries'
-              ? <DropdownItem disabled>{this.state.currentTable}</DropdownItem>
+            {this.context.currentTable === 'All Entries'
+              ? <DropdownItem disabled>{this.context.currentTable}</DropdownItem>
               : <DropdownItem onClick={() => {
                 this.context.getAllEntries();
-                this.context.currentTable = 'All Entries';
-                this.setState({ currentTable: 'All Entries' });
+                this.context.setCurrentTable('All Entries');
               }}>{'All Entries'} </DropdownItem>}
 
             <DropdownItem divider />
-            {this.state.currentTable === "Today's Entries"
-              ? <DropdownItem disabled>{this.state.currentTable}</DropdownItem>
+            {this.context.currentTable === "Today's Entries"
+              ? <DropdownItem disabled>{this.context.currentTable}</DropdownItem>
               : <DropdownItem onClick={() => {
                 this.context.getTodaysEntries();
-                this.context.currentTable = "Today's Entries";
-                this.setState({ currentTable: "Today's Entries" });
-              }}> {this.state.otherTables[0]} </DropdownItem>}
+                this.context.setCurrentTable("Today's Entries");
+              }}> {"Today's Entries"} </DropdownItem>}
 
           </DropdownMenu>
         </Dropdown>

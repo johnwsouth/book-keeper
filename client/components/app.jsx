@@ -21,6 +21,7 @@ class App extends React.Component {
     this.deleteEntry = this.deleteEntry.bind(this);
     this.getProductAverage = this.getProductAverage.bind(this);
     this.getTodaysEntries = this.getTodaysEntries.bind(this);
+    this.setCurrentTable = this.setCurrentTable.bind(this);
   }
 
   componentDidMount() {
@@ -87,15 +88,19 @@ class App extends React.Component {
       }
     });
     this.setState({ entries: changedEntries });
+  }
 
+  setCurrentTable(table) {
+    this.setState({ currentTable: table });
   }
 
   render() {
     var appContext = {
       entries: this.state.entries,
-      currentTable: 'All Entries',
       getAllEntries: this.getAllEntries,
-      getTodaysEntries: this.getTodaysEntries
+      getTodaysEntries: this.getTodaysEntries,
+      setCurrentTable: this.setCurrentTable,
+      currentTable: this.state.currentTable
     };
     return (
       <AppContext.Provider value={appContext} >
