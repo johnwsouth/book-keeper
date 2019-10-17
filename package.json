@@ -37,6 +37,7 @@
     "react-dom": "16.8.6",
     "react-router-dom": "5.1.2",
     "react-yearly-calendar": "1.2.1",
+    "reactstrap": "8.0.1",
     "victory": "33.1.0"
   },
   "devDependencies": {
