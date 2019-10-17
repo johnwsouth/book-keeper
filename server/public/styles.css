@@ -20,9 +20,9 @@ body{
   color: white;
   background-color: rgb(32, 32, 32);
   text-shadow: 1px 1px 5px black;
-  height: 10vmin;
+  height: 9vmin;
   width: 100%;
-  font-size: 3.5vmin;
+  font-size: 6vmin;
   z-index: 0;
   position: fixed;
   display: flex;
@@ -40,13 +40,11 @@ body{
 
 
 .entry-average{
-  line-height: 240%;
+  line-height: 120%;
   height: 100px;
-  font-size: 2rem;
 }
 
 .average-entry-box{
-  font-size: 1.15rem;
   color: black;
   text-shadow: 0px 0px 0px black;
   background-color: whitesmoke;
@@ -114,4 +112,8 @@ body{
 
 .react-datepicker-popper{
   z-index: 100;
+}
+
+.nav-icon {
+  font-size: 5vmin;
 }
