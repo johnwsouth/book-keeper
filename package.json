@@ -28,6 +28,7 @@
     "@babel/preset-react": "7.6.3",
     "babel-jest": "24.9.0",
     "body-parser": "1.19.0",
+    "css-loader": "3.2.0",
     "dotenv": "8.1.0",
     "express": "4.17.1",
     "json-server": "0.14.2",
@@ -39,6 +40,7 @@
     "react-router-dom": "5.1.2",
     "react-yearly-calendar": "1.2.1",
     "reactstrap": "8.0.1",
+    "style-loader": "1.0.0",
     "victory": "33.1.0"
   },
   "devDependencies": {

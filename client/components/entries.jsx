@@ -36,7 +36,7 @@ export default class EntryTable extends React.Component {
   render() {
     return (
       <div>
-        <Dropdown style={{ display: 'fixed', position: 'absolute', left: '2%', top: '20%' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <Dropdown style={{ display: 'inline-block', position: 'fixed', right: '2%', top: '3%', zIndex: '4' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle caret>
             {this.context.currentTable}
           </DropdownToggle>

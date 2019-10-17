@@ -113,9 +113,9 @@ class App extends React.Component {
             <Route path="/calendar" component ={CalendarContainer}/>
             <Route exact path="/chart" component={Chart}/>
             <Route path="/">
+              <DateInput />
               <EntryTable deleteEntry={this.deleteEntry} />
               <EntryForm addEntry={this.addEntry} />
-              <DateInput />
 
             </Route>
           </Switch>
