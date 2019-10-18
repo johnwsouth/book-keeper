@@ -58,7 +58,7 @@ body{
 .table{
   width: 100vmin;
   display: inline-table;
-  margin-top: 12vmin;
+  margin-top: 15vmin;
   margin-left: 5vmin;
 }
 
@@ -107,6 +107,9 @@ body{
   z-index: 4
 }
 
+.entry-page-chart-container {
+
+}
 
 .nav-icon {
   font-size: 5vmin;
