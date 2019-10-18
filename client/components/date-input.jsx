@@ -8,10 +8,11 @@ export default class DateInput extends React.Component {
     this.state = {
       startDate: new Date()
     };
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(date) {
     this.setState({
-      startDate: new Date()
+      startDate: date
     });
   }
 
