@@ -17,6 +17,7 @@ export default class DateInput extends React.Component {
 
   handleChange(date) {
     var fetchDate = format(date, 'yyyy-MM-dd');
+    this.context.setCurrentTable('Custom Date');
     this.context.getDaySales(fetchDate);
     this.setState({
       startDate: date
@@ -41,20 +42,20 @@ export default class DateInput extends React.Component {
           {this.context.currentTable}
         </DropdownToggle>
         <DropdownMenu>
-          {this.context.currentTable === 'All Entries'
-            ? <DropdownItem disabled>{this.context.currentTable}</DropdownItem>
-            : <DropdownItem onClick={() => {
+          {this.context.currentTable !== 'All Entries'
+            ? <DropdownItem onClick={() => {
               this.context.getAllEntries();
               this.context.setCurrentTable('All Entries');
-            }}>{'All Entries'} </DropdownItem>}
+            }}>{'All Entries'} </DropdownItem>
+            : <DropdownItem disabled>{this.context.currentTable}</DropdownItem>}
 
           <DropdownItem divider />
-          {this.context.currentTable === "Today's Entries"
-            ? <DropdownItem disabled>{this.context.currentTable}</DropdownItem>
-            : <DropdownItem onClick={() => {
+          {this.context.currentTable !== "Today's Entries"
+            ? <DropdownItem onClick={() => {
               this.context.getTodaysEntries();
               this.context.setCurrentTable("Today's Entries");
-            }}> {"Today's Entries"} </DropdownItem>}
+            }}> {"Today's Entries"} </DropdownItem>
+            : <DropdownItem disabled>{this.context.currentTable}</DropdownItem>}
 
         </DropdownMenu>
       </Dropdown>
