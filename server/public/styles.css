@@ -8,50 +8,45 @@ body{
   background-image: url('./images/SolidGray.jpg');
   background-size: cover;
   font-family: 'Cardo', serif;
-
-
 }
 
 .title-container {
-  width: 30%;
+  width: 45vmin;
 
 }
 
-.header-padding {
-  height: 10%;
-  display: block;
-}
 
 .header-container {
   color: white;
   background-color: rgb(32, 32, 32);
   text-shadow: 1px 1px 5px black;
-  height: 10%;
+  height: 9vmin;
   width: 100%;
-  font-size: 3.5rem;
-  z-index: 2;
+  font-size: 6vmin;
+  z-index: 0;
   position: fixed;
   display: flex;
 }
 .header-entry-average {
   height: 100%;
-  font-size: 1.15rem;
+  font-size: 2vmin;
+  display: inline-block;
 }
 
 .book-master{
-  height: 6rem;
-  margin-left: 1%
+  height: 9.5vmin;
+  margin-left: 1%;
+  margin-bottom: 1%;
 }
 
 
 .entry-average{
-  line-height: 300%;
-  height: 100px;
-  font-size: 2rem;
+  display: inline-block;
+  line-height: 120%;
+  height: 10vmin;
 }
 
 .average-entry-box{
-  font-size: 1.15rem;
   color: black;
   text-shadow: 0px 0px 0px black;
   background-color: whitesmoke;
@@ -61,24 +56,24 @@ body{
 }
 
 .table{
-  width: 60%;
+  width: 100vmin;
   display: inline-table;
-  margin-top: 15%;
-  margin-left: 2%;
+  margin-top: 15vmin;
+  margin-left: 5vmin;
 }
 
 .form-container{
   width: 26%;
   position: fixed;
   display: inline-block;
-  top: 20%;
-  right: 5%
+  top: 14vmin;
+  right: 15vmin
 }
 
 .form{
-  height: 40px;
-  display: block;
-  margin-top: 10px;
+  height: 4.5vmin;
+  display: inline-block;
+  margin-top: 1.5vmin;
 }
 
 .table-form{
@@ -91,7 +86,7 @@ body{
   display: inline-block;
   position: absolute;
   left: -10%;
-  font-size: 1.5rem;
+  font-size: 2.5vmin;
 }
 
 .icon-name {
@@ -105,7 +100,17 @@ body{
   top:59%;
 }
 
-.operation-cell {
-  display: flex;
+.react-datepicker-wrapper {
+  position: fixed;
+  top: 3.5vmin;
+  right: 24vmin;
+  z-index: 4
+}
 
+.entry-page-chart-container {
+
+}
+
+.nav-icon {
+  font-size: 5vmin;
 }

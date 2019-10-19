@@ -5,7 +5,22 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 router.get('/', (req, res, next) => {
-  connection.query('SELECT * FROM entries', (err, rows, fields) => {
+  connection.query('SELECT * FROM entries', (err, rows, next) => {
+    if (err) return next(err);
+    if (rows === undefined) {
+      res.send('No entries exist on this day');
+    }
+    res.status(200).json(rows);
+  });
+});
+
+router.get('/today', (req, res, next) => {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  today = yyyy + '-' + mm + '-' + dd;
+  connection.query('SELECT * FROM entries WHERE entryTime LIKE ?', today + '%', (err, rows, next) => {
     if (err) return next(err);
     if (rows === undefined) {
       res.send('No entries exist');
@@ -15,7 +30,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  connection.execute('SELECT * FROM entries WHERE entryID = ?', [req.params.id], (err, rows, fields) => {
+  connection.execute('SELECT * FROM entries WHERE entryID = ?', [req.params.id], (err, rows, next) => {
     if (err) return next(err);
     if (rows[0] === undefined) {
       res.send('Entry specified does not exist');
