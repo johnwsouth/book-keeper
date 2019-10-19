@@ -23,6 +23,7 @@ class App extends React.Component {
     this.getProductAverage = this.getProductAverage.bind(this);
     this.getTodaysEntries = this.getTodaysEntries.bind(this);
     this.setCurrentTable = this.setCurrentTable.bind(this);
+    this.getDaySales = this.getDaySales.bind(this);
   }
 
   componentDidMount() {
@@ -95,13 +96,24 @@ class App extends React.Component {
     this.setState({ currentTable: table });
   }
 
+  getDaySales(fetchDate) {
+    fetch(`http://localhost:3000/api/entries/day/${'' + fetchDate}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        this.setState({ entries: data });
+      });
+  }
+
   render() {
     var appContext = {
       entries: this.state.entries,
       getAllEntries: this.getAllEntries,
       getTodaysEntries: this.getTodaysEntries,
       setCurrentTable: this.setCurrentTable,
-      currentTable: this.state.currentTable
+      currentTable: this.state.currentTable,
+      getDaySales: this.getDaySales
     };
     return (
       <AppContext.Provider value={appContext} >
