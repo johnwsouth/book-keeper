@@ -117,8 +117,12 @@ a:hover{
 }
 
 .delete-table-button{
-  background-color: orangered;
   color: white;
   margin-left: 16%;
 
+
+}
+
+.delete-table-button:hover{
+  background-color: orangered;
 }

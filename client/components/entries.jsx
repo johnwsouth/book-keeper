@@ -12,7 +12,7 @@ function Entry(props) {
       <td>{'$ ' + (parseFloat(props.entry.entryPrice / 100).toFixed(2))}</td>
       <td>{props.entry.entryUnits}</td>
       <td>{newEntryDate + ' - ' + newEntryTime}</td>
-      <td className ="operation-cell"><button data-key={props.entry.entryID} className = "btn delete-table-button" onClick={props.deleteEntry}>Delete</button></td>
+      <td className ="operation-cell"><button data-key={props.entry.entryID} className = "btn btn-secondary delete-table-button" onClick={props.deleteEntry}>Delete</button></td>
     </tr>);
 }
 
