@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+// import { format } from 'date-fns';
 
 export default class DateInput extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class DateInput extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(date) {
-
+    // console.log(format(date, "'Today is a' dd"));
     this.setState({
       startDate: date
     });
