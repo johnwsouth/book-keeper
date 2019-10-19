@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import AppContext from '../context';
 
 function Entry(props) {
@@ -36,28 +35,6 @@ export default class EntryTable extends React.Component {
   render() {
     return (
       <div>
-        <Dropdown style={{ display: 'inline-block', position: 'fixed', right: '8vmin', top: '3vmin', zIndex: '1' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle caret>
-            {this.context.currentTable}
-          </DropdownToggle>
-          <DropdownMenu>
-            {this.context.currentTable === 'All Entries'
-              ? <DropdownItem disabled>{this.context.currentTable}</DropdownItem>
-              : <DropdownItem onClick={() => {
-                this.context.getAllEntries();
-                this.context.setCurrentTable('All Entries');
-              }}>{'All Entries'} </DropdownItem>}
-
-            <DropdownItem divider />
-            {this.context.currentTable === "Today's Entries"
-              ? <DropdownItem disabled>{this.context.currentTable}</DropdownItem>
-              : <DropdownItem onClick={() => {
-                this.context.getTodaysEntries();
-                this.context.setCurrentTable("Today's Entries");
-              }}> {"Today's Entries"} </DropdownItem>}
-
-          </DropdownMenu>
-        </Dropdown>
         <table className="table table-secondary table-bordered">
           <thead className="thead-dark table-header">
             <tr>
