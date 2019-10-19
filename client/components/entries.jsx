@@ -12,7 +12,7 @@ function Entry(props) {
       <td>{'$ ' + (parseFloat(props.entry.entryPrice / 100).toFixed(2))}</td>
       <td>{props.entry.entryUnits}</td>
       <td>{newEntryDate + ' - ' + newEntryTime}</td>
-      <td className ="operation-cell"><button data-key={props.entry.entryID} className = "btn btn-secondary" onClick={props.deleteEntry}>Delete</button></td>
+      <td className ="operation-cell"><button data-key={props.entry.entryID} className = "btn delete-table-button" onClick={props.deleteEntry}>Delete</button></td>
     </tr>);
 }
 
@@ -20,16 +20,9 @@ export default class EntryTable extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
     };
-  }
-
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
   }
 
   render() {

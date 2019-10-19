@@ -12,7 +12,6 @@ body{
 
 .title-container {
   width: 45vmin;
-
 }
 
 
@@ -115,4 +114,11 @@ a:hover{
 
 .nav-icon {
   font-size: 5vmin;
+}
+
+.delete-table-button{
+  background-color: orangered;
+  color: white;
+  margin-left: 16%;
+
 }
