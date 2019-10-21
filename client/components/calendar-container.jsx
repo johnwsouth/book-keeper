@@ -11,6 +11,7 @@ class CalendarContainer extends React.Component {
     };
     this.onDatePicked = this.onDatePicked.bind(this);
     this.goToPrevYear = this.goToPrevYear.bind(this);
+    this.goToNextYear = this.goToNextYear.bind(this);
   }
 
   onDatePicked(date) {
@@ -36,6 +37,11 @@ class CalendarContainer extends React.Component {
     this.setState({ currentYear: prevYear });
   }
 
+  goToNextYear() {
+    var nextYear = this.state.currentYear + 1;
+    this.setState({ currentYear: nextYear });
+  }
+
   render() {
     return (
       <div>
@@ -44,7 +50,7 @@ class CalendarContainer extends React.Component {
           onPickDate={this.onDatePicked}
           showWeekSeparators= {true}
         />
-        <CalendarControls year = {this.state.currentYear} onPrevYear = {this.goToPrevYear}/>
+        <CalendarControls year = {this.state.currentYear} onPrevYear = {this.goToPrevYear} onNextYear={this.goToNextYear}/>
 
       </div>);
   }
