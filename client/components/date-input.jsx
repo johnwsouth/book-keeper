@@ -36,26 +36,27 @@ export default class DateInput extends React.Component {
         <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChange}
+          style={{ height: '1vmin', fontSize: '1vmin' }}
         />
-      <Dropdown style={{ display: 'inline-block', position: 'fixed', right: '8vmin', top: '3vmin', zIndex: '1' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
+      <Dropdown style={{ display: 'inline-block', position: 'fixed', right: '12vmin', top: '3vmin', zIndex: '1' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle caret style={{ height: '4vmin', fontSize: '1.5vmin' }}>
           {this.context.currentTable}
         </DropdownToggle>
-        <DropdownMenu>
+        <DropdownMenu >
           {this.context.currentTable !== 'All Entries'
-            ? <DropdownItem onClick={() => {
+            ? <DropdownItem style={{ height: '4vmin', fontSize: '1.5vmin' }} onClick={() => {
               this.context.getAllEntries();
               this.context.setCurrentTable('All Entries');
             }}>{'All Entries'} </DropdownItem>
-            : <DropdownItem disabled>{this.context.currentTable}</DropdownItem>}
+            : <DropdownItem style={{ height: '4vmin', fontSize: '1.5vmin' }}disabled>{this.context.currentTable}</DropdownItem>}
 
           <DropdownItem divider />
           {this.context.currentTable !== "Today's Entries"
-            ? <DropdownItem onClick={() => {
+            ? <DropdownItem style={{ height: '4vmin', fontSize: '1.5vmin' }}onClick={() => {
               this.context.getTodaysEntries();
               this.context.setCurrentTable("Today's Entries");
             }}> {"Today's Entries"} </DropdownItem>
-            : <DropdownItem disabled>{this.context.currentTable}</DropdownItem>}
+            : <DropdownItem style={{ height: '4vmin', fontSize: '1.5vmin' }}disabled>{this.context.currentTable}</DropdownItem>}
 
         </DropdownMenu>
       </Dropdown>
