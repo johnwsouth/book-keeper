@@ -7,12 +7,11 @@ body{
   width: 100vw;
   background-image: url('./images/SolidGray.jpg');
   background-size: cover;
-  font-family: 'Cardo', serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .title-container {
   width: 45vmin;
-
 }
 
 
@@ -107,10 +106,23 @@ body{
   z-index: 4
 }
 
-.entry-page-chart-container {
-
+a:hover{
+  color: orangered;
+  text-decoration: rosybrown
 }
+
 
 .nav-icon {
   font-size: 5vmin;
+}
+
+.delete-table-button{
+  color: white;
+  margin-left: 16%;
+
+
+}
+
+.delete-table-button:hover{
+  background-color: orangered;
 }
