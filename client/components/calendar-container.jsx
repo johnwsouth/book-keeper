@@ -6,9 +6,12 @@ class CalendarContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      date: new Date(),
+      currentYear: 2019
     };
     this.onDatePicked = this.onDatePicked.bind(this);
+    this.goToPrevYear = this.goToPrevYear.bind(this);
+    this.goToNextYear = this.goToNextYear.bind(this);
   }
 
   onDatePicked(date) {
@@ -29,15 +32,25 @@ class CalendarContainer extends React.Component {
     this.props.history.push(`/details/${'' + date._i[0] + '-' + newMonth + '-' + newDay}`);
   }
 
+  goToPrevYear() {
+    var prevYear = this.state.currentYear - 1;
+    this.setState({ currentYear: prevYear });
+  }
+
+  goToNextYear() {
+    var nextYear = this.state.currentYear + 1;
+    this.setState({ currentYear: nextYear });
+  }
+
   render() {
     return (
       <div>
         <Calendar
-          year={2019}
+          year={this.state.currentYear}
           onPickDate={this.onDatePicked}
           showWeekSeparators= {true}
         />
-        <CalendarControls year = {2019}/>
+        <CalendarControls year = {this.state.currentYear} onPrevYear = {this.goToPrevYear} onNextYear={this.goToNextYear} />
 
       </div>);
   }
