@@ -50,7 +50,7 @@ class CalendarContainer extends React.Component {
           onPickDate={this.onDatePicked}
           showWeekSeparators= {true}
         />
-        <CalendarControls year = {this.state.currentYear} onPrevYear = {this.goToPrevYear} onNextYear={this.goToNextYear}/>
+        <CalendarControls year = {this.state.currentYear} onPrevYear = {this.goToPrevYear} onNextYear={this.goToNextYear} />
 
       </div>);
   }
