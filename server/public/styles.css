@@ -22,7 +22,7 @@ body{
   height: 9vmin;
   width: 100%;
   font-size: 6vmin;
-  z-index: 0;
+  z-index: 20;
   position: fixed;
   display: flex;
 }
@@ -107,14 +107,14 @@ body{
 
 .react-datepicker-wrapper {
   position: fixed;
-  right: 22vmin;
+  right: 25vmin;
   z-index: 2;
   top: -1vmin;
   width: 15vmin;
 }
 
 div.dropdown{
-  right: 10vmin;
+  right: 8vmin;
 }
 
 
@@ -122,6 +122,10 @@ div.dropdown{
 .react-datepicker__input-container > input{
   font-size: 2vmin;
   width: 15vmin;
+}
+
+.cancel-entry-button{
+  margin-left: 1.5vmin;
 }
 
 a:hover{
@@ -192,10 +196,15 @@ a:hover{
 
   .form-container{
     width: 50vmin;
+    top: 11.5vmin;
+    right: 2vmin;
+    z-index: 5;
+
   }
   .form-control{
     width: 30%;
     margin-left: 1vmin;
+    height: 4vmin;
   }
   .icon{
     left: 8.5vmin;
@@ -209,11 +218,15 @@ a:hover{
     left: 40vmin
   }
 
-  .submit-entry-button{
-
+  .entry-form-button{
+    height: 6.3vmin;
+    font-size: 2.3vmin;
+    position: fixed;
+    margin-top: -3vmin;
+    margin-left: 10vmin;
   }
 
   .cancel-entry-button{
-
+    margin-left: 27vmin;
   }
 }
