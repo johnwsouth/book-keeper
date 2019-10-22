@@ -22,7 +22,7 @@ body{
   height: 9vmin;
   width: 100%;
   font-size: 6vmin;
-  z-index: 0;
+  z-index: 20;
   position: fixed;
   display: flex;
 }
@@ -44,7 +44,11 @@ body{
   display: inline-block;
   line-height: 120%;
   height: 10vmin;
-  width: 30vmin;
+  width: 70vmin;
+}
+
+.header-entry-average:nth-child(2){
+  margin-left: 2vmin;
 }
 
 .average-entry-box{
@@ -103,14 +107,25 @@ body{
 
 .react-datepicker-wrapper {
   position: fixed;
-  top: 3.5vmin;
-  right: 24vmin;
-  z-index: 4
+  right: 25vmin;
+  z-index: 2;
+  top: -1vmin;
+  width: 15vmin;
 }
+
+div.dropdown{
+  right: 8vmin;
+}
+
+
 
 .react-datepicker__input-container > input{
   font-size: 2vmin;
   width: 15vmin;
+}
+
+.cancel-entry-button{
+  margin-left: 1.5vmin;
 }
 
 a:hover{
@@ -123,13 +138,118 @@ a:hover{
   font-size: 5vmin;
 }
 
+.nav-calendar{
+  margin-left: 5vmin;
+}
+
 .delete-table-button{
   color: white;
-  margin-left: 16%;
-
-
+  position: relative;
+  left: 2vmin;
 }
 
 .delete-table-button:hover{
   background-color: orangered;
+}
+  .title-container {
+    margin-left: 3vmin;
+  }
+
+@media screen and (max-width: 1200px) {
+  .header-container{
+    top:0;
+  }
+  .header-title{
+    display: none;
+  }
+  .header-title > a {
+    display: none;
+  }
+  .title-container{
+    width: 12vmin;
+  }
+
+  .table{
+    width: 50vmin;
+  }
+
+  .entry-table {
+    margin-top: 30vmin;
+  }
+
+  .table td, .table th{
+    padding: 1.4vmin;
+  }
+
+  .VictoryContainer{
+    top: 10vmin;
+    display: block !important;
+  }
+
+  .VictoryContainer svg{
+    width: 200% !important;
+  }
+
+  .nav-calendar{
+    margin-right: 4vmin;
+  }
+
+    .VictoryContainer svg:nth-child(1){
+    width: 200% !important;
+  }
+
+  .react-datepicker-wrapper {
+  position: fixed;
+  top: 6.5vmin;
+  left: 5vmin;
+  z-index: 4
+  }
+
+  div.dropdown{
+  position: fixed;
+  top: 7.3vmin;
+  left: 20vmin;
+  z-index: 4;
+  width: 15vmin;
+  }
+
+  .form-container{
+    width: 50vmin;
+    top: 11.5vmin;
+    right: 2vmin;
+    z-index: 5;
+
+  }
+  .form-control{
+    width: 30%;
+    margin-left: 1vmin;
+    height: 4vmin;
+  }
+  .icon{
+    left: 8.5vmin;
+    top: -2vmin;
+  }
+  .icon-price{
+    left: 23vmin;
+  }
+
+  .icon-entry{
+    left: 40vmin
+  }
+
+  .delete-table-button{
+    left: 0
+  }
+
+  .entry-form-button{
+    height: 6.3vmin;
+    font-size: 2.3vmin;
+    position: fixed;
+    margin-top: -3vmin;
+    margin-left: 10vmin;
+  }
+
+  .cancel-entry-button{
+    margin-left: 27vmin;
+  }
 }

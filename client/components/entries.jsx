@@ -28,7 +28,7 @@ export default class EntryTable extends React.Component {
   render() {
     return (
       <div>
-        <table className="table table-secondary table-bordered">
+        <table className="entry-table table table-secondary table-bordered">
           <thead className="thead-dark table-header">
             <tr>
               <th scope="col">Purchased product</th>
