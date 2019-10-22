@@ -156,4 +156,15 @@ a:hover{
     width: 12vmin;
   }
 
+  .table{
+    width: 50vmin;
+  }
+
+  .react-datepicker-wrapper {
+  position: fixed;
+  top: 7vmin;
+  left: 5vmin;
+  z-index: 4
+}
+
 }
