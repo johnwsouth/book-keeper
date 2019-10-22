@@ -190,7 +190,7 @@ a:hover{
     width: 200% !important;
   }
 
-  .nav-icon{
+  .nav-calendar{
     margin-right: 4vmin;
   }
 
@@ -235,6 +235,10 @@ a:hover{
 
   .icon-entry{
     left: 40vmin
+  }
+
+  .delete-table-button{
+    left: 0
   }
 
   .entry-form-button{

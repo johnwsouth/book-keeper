@@ -144,135 +144,154 @@ export default class Chart extends React.Component {
         }
       }
 
-      return (
-        <div className='chart-container'>
-          <VictoryChart
-            containerComponent={<VictoryZoomContainer
-              allowZoom = {false}
-              zoomDimension="x"
-              zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
-            />}
-            domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '10%' } }}>
-            <VictoryLabel text="Price per Entry" x={225} y={5} textAnchor="middle"/>
-            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
-              data={dataEntryTotal}
-              // data accessor for x values
-              x='Entries'
-              // data accessor for y values
-              y='Entry Totals'
-              animate={{ duration: 650 }}
-            />
-            <VictoryAxis
-              label="Entries"
-              style={{
-                axisLabel: { padding: 33 }
-              }}
-            />
-            <VictoryAxis dependentAxis
-              label="Entry Total Cost"
-              style={{
-                axisLabel: { padding: 35 }
-              }}
-            />
-          </ VictoryChart>
+      if (largestEntryTotal !== 0) {
+        return (
+          <div className='chart-container'>
+            <VictoryChart
+              containerComponent={<VictoryZoomContainer
+                allowZoom = {false}
+                zoomDimension="x"
+                zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
+              />}
+              domainPadding={{ x: 40 }}
+              style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '10%' } }}>
+              <VictoryLabel text="Price per Entry" x={225} y={5} textAnchor="middle"/>
+              <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+                data={dataEntryTotal}
+                // data accessor for x values
+                x='Entries'
+                // data accessor for y values
+                y='Entry Totals'
+                animate={{ duration: 650 }}
+              />
+              <VictoryAxis
+                label="Entries"
+                style={{
+                  axisLabel: { padding: 33 }
+                }}
+              />
+              <VictoryAxis dependentAxis
+                label="Entry Total Cost"
+                style={{
+                  axisLabel: { padding: 35 }
+                }}
+              />
+            </ VictoryChart>
 
-          <VictoryChart
-            containerComponent={<VictoryZoomContainer
-              allowZoom={false}
-              zoomDimension="x"
-              zoomDomain={{ x: [0, 7], y: [0, largestEntryUnit * 1.2] }}
-            />}
-            domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '5%', marginTop: '10%' } }}>
-            <VictoryLabel text="Price per Unit" x={225} y={5} textAnchor="middle" />
-            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
-              data={dataEntryPricePerUnit}
-              // data accessor for x values
-              x='Entries'
-              // data accessor for y values
-              y='Entry Totals'
-              animate={{ duration: 650 }}
-            />
-            <VictoryAxis
-              label="Entries"
-              style={{
-                axisLabel: { padding: 33 }
-              }}
-            />
-            <VictoryAxis dependentAxis
-              label="Entry Price Per Unit"
-              style={{
-                axisLabel: { padding: 35 }
-              }}
-            />
-          </ VictoryChart>
+            <VictoryChart
+              containerComponent={<VictoryZoomContainer
+                allowZoom={false}
+                zoomDimension="x"
+                zoomDomain={{ x: [0, 7], y: [0, largestEntryUnit * 1.2] }}
+              />}
+              domainPadding={{ x: 40 }}
+              style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '5%', marginTop: '10%' } }}>
+              <VictoryLabel text="Price per Unit" x={225} y={5} textAnchor="middle" />
+              <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+                data={dataEntryPricePerUnit}
+                // data accessor for x values
+                x='Entries'
+                // data accessor for y values
+                y='Entry Totals'
+                animate={{ duration: 650 }}
+              />
+              <VictoryAxis
+                label="Entries"
+                style={{
+                  axisLabel: { padding: 33 }
+                }}
+              />
+              <VictoryAxis dependentAxis
+                label="Entry Price Per Unit"
+                style={{
+                  axisLabel: { padding: 35 }
+                }}
+              />
+            </ VictoryChart>
 
-          <VictoryChart
-            containerComponent={<VictoryZoomContainer
-              allowZoom={false}
-              zoomDimension="x"
-              zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
-            />}
-            domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '3%', marginBottom: '4%' } }}>
-            <VictoryLabel text="Sales Per Day" x={225} y={5} textAnchor="middle" />
-            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
-              data={dataEntrySalesPerDay}
-              // data accessor for x values
-              x='dates'
-              // data accessor for y values
-              y='sales'
-              animate={{ duration: 650 }}
-            />
-            <VictoryAxis
-              label="Dates"
-              style={{
-                axisLabel: { padding: 33 }
-              }}
-            />
-            <VictoryAxis dependentAxis
-              label="Sales"
-              style={{
-                axisLabel: { padding: 35 }
-              }}
-            />
-          </ VictoryChart>
+            <VictoryChart
+              containerComponent={<VictoryZoomContainer
+                allowZoom={false}
+                zoomDimension="x"
+                zoomDomain={{ x: [0, 7], y: [0, largestEntryTotal * 1.2] }}
+              />}
+              domainPadding={{ x: 40 }}
+              style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '10%', marginTop: '3%', marginBottom: '4%' } }}>
+              <VictoryLabel text="Sales Per Day" x={225} y={5} textAnchor="middle" />
+              <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+                data={dataEntrySalesPerDay}
+                // data accessor for x values
+                x='dates'
+                // data accessor for y values
+                y='sales'
+                animate={{ duration: 650 }}
+              />
+              <VictoryAxis
+                label="Dates"
+                style={{
+                  axisLabel: { padding: 33 }
+                }}
+              />
+              <VictoryAxis dependentAxis
+                label="Sales"
+                style={{
+                  axisLabel: { padding: 35 }
+                }}
+              />
+            </ VictoryChart>
 
-          <VictoryChart
-            containerComponent={<VictoryZoomContainer
-              allowZoom={false}
-              zoomDimension="x"
-              zoomDomain={{ x: [0, 12], y: [0, largestEntryTotal * 1.2] }}
-            />}
-            domainPadding={{ x: 40 }}
-            style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '5%', marginTop: '3%' } }}>
-            <VictoryLabel text="Sales Per Hour" x={225} y={5} textAnchor="middle" />
-            <VictoryBar style={{ parent: { maxWidth: '50%' } }}
-              data={dataEntrySalesPerHour}
-              // data accessor for x values
-              x='hours'
-              // data accessor for y values
-              y='sales'
-              animate={{ duration: 650 }}
-            />
-            <VictoryAxis
-              label="Hours"
-              style={{
-                axisLabel: { padding: 33 }
-              }}
-            />
-            <VictoryAxis dependentAxis
-              label="Sales"
-              style={{
-                axisLabel: { padding: 35 }
-              }}
-            />
-          </ VictoryChart>
-        </div>
-      );
+            <VictoryChart
+              containerComponent={<VictoryZoomContainer
+                allowZoom={false}
+                zoomDimension="x"
+                zoomDomain={{ x: [0, 12], y: [0, largestEntryTotal * 1.2] }}
+              />}
+              domainPadding={{ x: 40 }}
+              style={{ parent: { maxWidth: '35%', display: 'inline-block', marginLeft: '5%', marginTop: '3%' } }}>
+              <VictoryLabel text="Sales Per Hour" x={225} y={5} textAnchor="middle" />
+              <VictoryBar style={{ parent: { maxWidth: '50%' } }}
+                data={dataEntrySalesPerHour}
+                // data accessor for x values
+                x='hours'
+                // data accessor for y values
+                y='sales'
+                animate={{ duration: 650 }}
+              />
+              <VictoryAxis
+                label="Hours"
+                style={{
+                  axisLabel: { padding: 33 }
+                }}
+              />
+              <VictoryAxis dependentAxis
+                label="Sales"
+                style={{
+                  axisLabel: { padding: 35 }
+                }}
+              />
+            </ VictoryChart>
+          </div>
+        );
+      } else {
+        return <div style={{ backgroundColor: 'white',
+          display: 'inline-block',
+          left: '15vmin',
+          position: 'absolute',
+          top: '50vmin',
+          boxShadow: '.8px .8px 3px black',
+          padding: '2vmin'
+        }}>No Entries Recorded on This Date</div>;
+      }
     } else {
-      return null;
+      return <div style={{
+        backgroundColor: 'white',
+        display: 'inline-block',
+        left: '15vmin',
+        position: 'absolute',
+        top: '50vmin',
+        boxShadow: '.8px .8px 3px black',
+        padding: '2vmin'
+      }}>No Entries Recorded on This Date</div>;
     }
   }
 }
