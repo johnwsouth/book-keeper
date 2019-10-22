@@ -167,7 +167,7 @@ a:hover{
   }
 
   .entry-table {
-    margin-top: 15vmin;
+    margin-top: 30vmin;
   }
 
   .table td, .table th{
@@ -190,4 +190,30 @@ a:hover{
   width: 15vmin;
   }
 
+  .form-container{
+    width: 50vmin;
+  }
+  .form-control{
+    width: 30%;
+    margin-left: 1vmin;
+  }
+  .icon{
+    left: 8.5vmin;
+    top: -2vmin;
+  }
+  .icon-price{
+    left: 23vmin;
+  }
+
+  .icon-entry{
+    left: 40vmin
+  }
+
+  .submit-entry-button{
+
+  }
+
+  .cancel-entry-button{
+
+  }
 }
