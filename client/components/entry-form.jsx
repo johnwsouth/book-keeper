@@ -89,8 +89,8 @@ class EntryForm extends React.Component {
           placeholder="Enter the number of units sold"
           onChange={this.handleChangeEntry}/>
         <div className="mt-3">
-          <button type="submit" className="btn btn-dark">Add entry</button>
-          <button type="cancel" className="btn btn-secondary ml-3" onClick={this.handleCancel}>Cancel</button>
+          <button type="submit" className="btn btn-dark entry-form-button submit-entry-button">Add entry</button>
+          <button type="cancel" className="btn btn-secondary entry-form-button cancel-entry-button" onClick={this.handleCancel}>Cancel</button>
         </div>
       </form>
     );
