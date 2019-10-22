@@ -107,10 +107,17 @@ body{
 
 .react-datepicker-wrapper {
   position: fixed;
-  top: 3.5vmin;
-  right: 24vmin;
-  z-index: 4
+  right: 22vmin;
+  z-index: 2;
+  top: -1vmin;
+  width: 15vmin;
 }
+
+div.dropdown{
+  right: 10vmin;
+}
+
+
 
 .react-datepicker__input-container > input{
   font-size: 2vmin;
@@ -127,25 +134,24 @@ a:hover{
   font-size: 5vmin;
 }
 
+.nav-calendar{
+  margin-left: 5vmin;
+}
+
 .delete-table-button{
   color: white;
   position: relative;
   left: 2vmin;
-
-
 }
 
 .delete-table-button:hover{
   background-color: orangered;
 }
-
-@media screen and (min-width: 601px){
   .title-container {
     margin-left: 3vmin;
   }
-}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
   .header-title{
     display: none;
   }
@@ -160,11 +166,28 @@ a:hover{
     width: 50vmin;
   }
 
+  .entry-table {
+    margin-top: 15vmin;
+  }
+
+  .table td, .table th{
+    padding: 1.4vmin;
+  }
+
+
   .react-datepicker-wrapper {
   position: fixed;
-  top: 7vmin;
+  top: 6.5vmin;
   left: 5vmin;
   z-index: 4
-}
+  }
+
+  div.dropdown{
+  position: fixed;
+  top: 7.3vmin;
+  left: 20vmin;
+  z-index: 4;
+  width: 15vmin;
+  }
 
 }

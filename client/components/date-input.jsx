@@ -38,8 +38,8 @@ export default class DateInput extends React.Component {
           onChange={this.handleChange}
 
         />
-      <Dropdown style={{ display: 'inline-block', position: 'fixed', right: '12vmin', top: '3vmin', zIndex: '1' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret style={{ height: '4vmin', fontSize: '1.5vmin' }}>
+      <Dropdown style={{ display: 'inline-block', position: 'fixed', zIndex: '1' }} isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle caret style={{ height: '5.5vmin', fontSize: '1.7vmin' }}>
           {this.context.currentTable}
         </DropdownToggle>
         <DropdownMenu >
