@@ -6,7 +6,6 @@ import EntryForm from './entry-form';
 import Chart from './chart';
 import CalendarContainer from './calendar-container';
 import DateDetails from './date-details';
-import DateInput from './date-input';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
@@ -127,7 +126,6 @@ class App extends React.Component {
             <Route path="/">
               <EntryTable deleteEntry={this.deleteEntry} />
               <EntryForm addEntry={this.addEntry} />
-              <DateInput />
 
             </Route>
           </Switch>

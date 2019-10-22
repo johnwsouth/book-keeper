@@ -44,7 +44,11 @@ body{
   display: inline-block;
   line-height: 120%;
   height: 10vmin;
-  width: 30vmin;
+  width: 70vmin;
+}
+
+.header-entry-average:nth-child(2){
+  margin-left: 2vmin;
 }
 
 .average-entry-box{
@@ -125,11 +129,31 @@ a:hover{
 
 .delete-table-button{
   color: white;
-  margin-left: 16%;
+  position: relative;
+  left: 2vmin;
 
 
 }
 
 .delete-table-button:hover{
   background-color: orangered;
+}
+
+@media screen and (min-width: 601px){
+  .title-container {
+    margin-left: 3vmin;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header-title{
+    display: none;
+  }
+  .header-title > a {
+    display: none;
+  }
+  .title-container{
+    width: 12vmin;
+  }
+
 }
