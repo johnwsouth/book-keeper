@@ -145,7 +145,7 @@ export default class Chart extends React.Component {
       }
 
       return (
-        <>
+        <div className='chart-container'>
           <VictoryChart
             containerComponent={<VictoryZoomContainer
               allowZoom = {false}
@@ -269,7 +269,7 @@ export default class Chart extends React.Component {
               }}
             />
           </ VictoryChart>
-        </>
+        </div>
       );
     } else {
       return null;

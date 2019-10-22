@@ -156,6 +156,9 @@ a:hover{
   }
 
 @media screen and (max-width: 1200px) {
+  .header-container{
+    top:0;
+  }
   .header-title{
     display: none;
   }
@@ -178,6 +181,22 @@ a:hover{
     padding: 1.4vmin;
   }
 
+  .VictoryContainer{
+    top: 10vmin;
+    display: block !important;
+  }
+
+  .VictoryContainer svg{
+    width: 200% !important;
+  }
+
+  .nav-icon{
+    margin-right: 4vmin;
+  }
+
+    .VictoryContainer svg:nth-child(1){
+    width: 200% !important;
+  }
 
   .react-datepicker-wrapper {
   position: fixed;
