@@ -28,6 +28,7 @@ body{
 }
 .header-entry-average {
   height: 100%;
+  width: 30vmin;
   font-size: 2vmin;
   display: inline-block;
 }
@@ -43,6 +44,7 @@ body{
   display: inline-block;
   line-height: 120%;
   height: 10vmin;
+  width: 30vmin;
 }
 
 .average-entry-box{
@@ -104,6 +106,11 @@ body{
   top: 3.5vmin;
   right: 24vmin;
   z-index: 4
+}
+
+.react-datepicker__input-container > input{
+  font-size: 2vmin;
+  width: 15vmin;
 }
 
 a:hover{
