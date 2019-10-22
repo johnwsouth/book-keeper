@@ -103,7 +103,14 @@ body{
   position: fixed;
   top: 3.5vmin;
   right: 24vmin;
+  height: 2vmin;
+  width: 2vmin;
   z-index: 4
+}
+
+.react-datepicker-wrapper:nth-child(1){
+  font-size: 2vmin;
+  width: 2vmin;
 }
 
 a:hover{
