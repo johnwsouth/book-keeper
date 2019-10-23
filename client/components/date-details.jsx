@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryContainer, VictoryBar, VictoryChart, VictoryAxis } from 'victory';
 
 class DateDetails extends React.Component {
   constructor(props) {
@@ -124,6 +124,7 @@ class DateDetails extends React.Component {
         <VictoryChart domainPadding = {{ x: 35 }}
           domain={{ y: [0, (largestEntryFirst * 1.2 || 2)] }}
           height={200} width ={600}
+          containerComponent={<VictoryContainer className="details-page-chart" />}
           style={{ parent: { height: '30vh',
             maxWidth: '70%',
             position: 'absolute',
@@ -155,6 +156,7 @@ class DateDetails extends React.Component {
           <VictoryChart domainPadding={{ x: 35 }}
             domain={{ y: [0, (largestEntrySecond * 1.2 || 2)] }}
             height={200} width={600}
+            containerComponent={<VictoryContainer className="details-page-chart" />}
             style={{ parent: { height: '30vh',
               maxWidth: '70%',
               position: 'absolute',
