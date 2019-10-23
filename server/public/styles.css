@@ -11,7 +11,7 @@ body{
 }
 
 .title-container {
-  width: 45vmin;
+  width: 50vmin;
 }
 
 
@@ -19,7 +19,7 @@ body{
   color: white;
   background-color: rgb(32, 32, 32);
   text-shadow: 1px 1px 5px black;
-  height: 9vmin;
+  height: 10vmin;
   width: 100%;
   font-size: 6vmin;
   z-index: 20;
@@ -28,8 +28,8 @@ body{
 }
 .header-entry-average {
   height: 100%;
-  width: 30vmin;
-  font-size: 2vmin;
+  width: 45%;
+  font-size: 1.5vmin;
   display: inline-block;
 }
 
@@ -39,12 +39,14 @@ body{
   margin-bottom: 1%;
 }
 
-
 .entry-average{
   display: inline-block;
-  line-height: 120%;
   height: 10vmin;
-  width: 70vmin;
+  width: 60vmin;
+  position: relative;
+  top: -1vmin;
+
+
 }
 
 .header-entry-average:nth-child(2){
@@ -72,7 +74,7 @@ body{
   position: fixed;
   display: inline-block;
   top: 14vmin;
-  right: 15vmin
+  right: 10vmin
 }
 
 .form{
@@ -193,21 +195,23 @@ a:hover{
   .nav-calendar{
     margin-right: 4vmin;
   }
-
+  .header-entry-average{
+    display: block;
+  }
     .VictoryContainer svg:nth-child(1){
     width: 200% !important;
   }
 
   .react-datepicker-wrapper {
   position: fixed;
-  top: 6.5vmin;
+  top: 9vmin;
   left: 5vmin;
   z-index: 4
   }
 
   div.dropdown{
   position: fixed;
-  top: 7.3vmin;
+  top: 10vmin;
   left: 20vmin;
   z-index: 4;
   width: 15vmin;
@@ -215,7 +219,7 @@ a:hover{
 
   .form-container{
     width: 50vmin;
-    top: 11.5vmin;
+    top: 14vmin;
     right: 2vmin;
     z-index: 5;
 
