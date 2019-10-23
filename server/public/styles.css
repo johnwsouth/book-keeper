@@ -5,13 +5,12 @@ body{
 #root {
   min-height: 100vh;
   width: 100vw;
-  background-image: url('./images/SolidGray.jpg');
-  background-size: cover;
+  background-color: gainsboro;
   font-family: 'Roboto', sans-serif;
 }
 
 .title-container {
-  width: 45vmin;
+  width: 50vmin;
 }
 
 
@@ -19,17 +18,21 @@ body{
   color: white;
   background-color: rgb(32, 32, 32);
   text-shadow: 1px 1px 5px black;
-  height: 9vmin;
+  height: 10vmin;
   width: 100%;
   font-size: 6vmin;
   z-index: 20;
   position: fixed;
   display: flex;
 }
+.react-datepicker__month-container{
+  text-shadow: 0px 0px 0px white;
+}
+
 .header-entry-average {
   height: 100%;
-  width: 30vmin;
-  font-size: 2vmin;
+  width: 45%;
+  font-size: 2.2vmin;
   display: inline-block;
 }
 
@@ -39,14 +42,19 @@ body{
   margin-bottom: 1%;
 }
 
-
 .entry-average{
   display: inline-block;
-  line-height: 120%;
   height: 10vmin;
-  width: 70vmin;
+  width: 80vmin;
+  position: absolute;
+  top: -1vmin;
+  left: 70vmin;
 }
 
+.chart-container {
+  padding-bottom: 20vmin;
+  background-color: gainsboro;
+}
 .header-entry-average:nth-child(2){
   margin-left: 2vmin;
 }
@@ -72,7 +80,7 @@ body{
   position: fixed;
   display: inline-block;
   top: 14vmin;
-  right: 15vmin
+  right: 10vmin
 }
 
 .form{
@@ -156,8 +164,13 @@ a:hover{
   }
 
 @media screen and (max-width: 1200px) {
+  div#root{
+    width: 100%;
+    display: inline-block;
+  }
   .header-container{
-    top:0;
+    top: 0;
+    height: 10vmin;
   }
   .header-title{
     display: none;
@@ -193,29 +206,36 @@ a:hover{
   .nav-calendar{
     margin-right: 4vmin;
   }
-
-    .VictoryContainer svg:nth-child(1){
-    width: 200% !important;
+  .header-entry-average{
+    font-size: 2vmin;
   }
+
+  .entry-average{
+    left: 32vmin;
+  }
+
 
   .react-datepicker-wrapper {
   position: fixed;
-  top: 6.5vmin;
+  top: 9vmin;
   left: 5vmin;
   z-index: 4
   }
 
   div.dropdown{
   position: fixed;
-  top: 7.3vmin;
+  top: 10vmin;
   left: 20vmin;
   z-index: 4;
   width: 15vmin;
   }
 
+  .details-page-chart{
+    max-width: 35%;
+  }
   .form-container{
     width: 50vmin;
-    top: 11.5vmin;
+    top: 14vmin;
     right: 2vmin;
     z-index: 5;
 

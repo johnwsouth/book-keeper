@@ -96,7 +96,7 @@ class App extends React.Component {
   }
 
   getDaySales(fetchDate) {
-    fetch(`http://localhost:3000/api/entries/day/${'' + fetchDate}`)
+    fetch(`/api/entries/day/${'' + fetchDate}`)
       .then(res => {
         return res.json();
       })
