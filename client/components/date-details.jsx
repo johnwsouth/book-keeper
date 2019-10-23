@@ -18,7 +18,7 @@ class DateDetails extends React.Component {
   }
 
   getDaySales() {
-    fetch(`http://localhost:3000/api/entries/day/${'' + this.props.match.params.date}`)
+    fetch(`/api/entries/day/${'' + this.props.match.params.date}`)
       .then(res => {
         return res.json();
       })
