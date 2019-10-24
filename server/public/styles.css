@@ -209,6 +209,10 @@ a:hover{
   .header-entry-average{
     font-size: 2vmin;
   }
+  .header-entry-average:nth-child(2){
+    margin-left: -1vmin;
+
+  }
 
   .entry-average{
     left: 32vmin;
