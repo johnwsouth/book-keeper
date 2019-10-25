@@ -1,5 +1,5 @@
 {
-  "name": "sgt-react",
+  "name": "book-keeper",
   "version": "1.0.0",
   "description": "The Student entry Table: Written in React",
   "main": "server/index.js",
